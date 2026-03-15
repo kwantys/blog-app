@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="panel">
+      <div class="panel-heading" id="add_post_head">Add a Blog/Post</div>
+      <div class="panel-body">
+        <form method="POST" novalidate>
+          {{ form.hidden_tag() }}
+
+          <div class="mb-3">
+            {{ form.title.label(class='form-label fw-semibold') }}
+            {{ form.title(class='form-control form-control-lg' + (' is-invalid' if form.title.errors else ''),
+               placeholder='Заголовок запису', id='title') }}
+            {% for err in form.title.errors %}
+            <div class="invalid-feedback">{{ err }}</div>
+            {% endfor %}
+          </div>
+
+          <div class="mb-3">
+            {{ form.description.label(class='form-label fw-semibold') }}
+            {{ form.description(class='form-control' + (' is-invalid' if form.description.errors else ''),
+               placeholder='Короткий опис...', id='description') }}
+            {% for err in form.description.errors %}
+            <div class="invalid-feedback">{{ err }}</div>
+            {% endfor %}
+          </div>
+
+          <div class="mb-3">
+            {{ form.body.label(class='form-label fw-semibold') }}
+            {{ form.body(class='form-control' + (' is-invalid' if form.body.errors else ''),
+               rows=10, placeholder='Текст запису...', id='body') }}
+            {% for err in form.body.errors %}
+            <div class="invalid-feedback">{{ err }}</div>
+            {% endfor %}
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">Автор</label>
+            <input type="text" id="author" class="form-control"
+                   value="{{ current_user.email }}" readonly>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button type="submit" id="post" class="btn btn-primary">Add Post</button>
+            <a href="{{ url_for('main.index') }}" class="btn btn-outline-secondary">Скасувати</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

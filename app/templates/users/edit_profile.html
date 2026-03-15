@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-7">
+    <div class="panel">
+      <div class="panel-heading" id="profile_heading">Your Profile</div>
+      <div class="panel-body">
+        <form method="POST" novalidate>
+          {{ form.hidden_tag() }}
+
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" id="username" class="form-control"
+                   value="{{ current_user.username }}" readonly>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="text" id="email" class="form-control"
+                   value="{{ current_user.email }}" readonly>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col">
+              {{ form.firstname.label(class='form-label') }}
+              {{ form.firstname(class='form-control', id='firstname') }}
+            </div>
+            <div class="col">
+              {{ form.lastname.label(class='form-label') }}
+              {{ form.lastname(class='form-control', id='lastname') }}
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col">
+              {{ form.age.label(class='form-label') }}
+              {{ form.age(class='form-control', id='age') }}
+            </div>
+            <div class="col">
+              <label class="form-label">Стать</label>
+              <div class="d-flex gap-3 mt-1">
+                {# Male radio: active if M selected, notActive if not #}
+                {% if current_user.gender == 'M' %}
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender"
+                         id="active_Male" value="M" checked>
+                  <label class="form-check-label" for="active_Male">Male</label>
+                </div>
+                {% else %}
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender"
+                         id="notActive_Male" value="M">
+                  <label class="form-check-label" for="notActive_Male">Male</label>
+                </div>
+                {% endif %}
+
+                {# Female radio: active if F selected, notActive if not #}
+                {% if current_user.gender == 'F' %}
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender"
+                         id="active_Female" value="F" checked>
+                  <label class="form-check-label" for="active_Female">Female</label>
+                </div>
+                {% else %}
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender"
+                         id="notActive_Female" value="F">
+                  <label class="form-check-label" for="notActive_Female">Female</label>
+                </div>
+                {% endif %}
+              </div>
+              {# Hidden select to carry value for WTForms #}
+              <input type="hidden" id="gender"
+                     name="gender_val" value="{{ current_user.gender }}">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            {{ form.address.label(class='form-label') }}
+            {{ form.address(class='form-control', id='address') }}
+          </div>
+
+          <div class="mb-3">
+            {{ form.website.label(class='form-label') }}
+            {{ form.website(class='form-control', id='website',
+               placeholder='https://example.com') }}
+          </div>
+
+          <div class="mb-3">
+            {{ form.bio.label(class='form-label') }}
+            {{ form.bio(class='form-control', rows=3, id='bio') }}
+          </div>
+
+          <div class="d-flex gap-2 mt-4">
+            <button type="submit" id="update_profile" class="btn btn-primary">
+              Update Profile
+            </button>
+            <a href="{{ url_for('users.change_password') }}"
+               class="btn btn-outline-secondary">
+              <i class="bi bi-shield-lock me-1"></i>Змінити пароль
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Sync radio buttons → hidden gender field for WTForms
+  document.querySelectorAll('input[name="gender"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      document.getElementById('gender').value = this.value;
+    });
+  });
+</script>
+{% endblock %}

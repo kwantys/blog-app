@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-5">
+    <div class="panel">
+      <div class="panel-heading">Sign In</div>
+      <div class="panel-body">
+        <form method="POST" novalidate id="login-form">
+          {{ form.hidden_tag() }}
+
+          <div class="mb-3">
+            {{ form.username.label(class='form-label') }}
+            {{ form.username(class='form-control', placeholder='username', id='username',
+               required=True) }}
+            {% for err in form.username.errors %}
+            <small class="text-danger d-block">{{ err }}</small>
+            {% endfor %}
+            <small style="display:none">The username is required and cannot be empty</small>
+          </div>
+
+          <div class="mb-3">
+            {{ form.password.label(class='form-label') }}
+            {{ form.password(class='form-control', id='password', required=True) }}
+            {% for err in form.password.errors %}
+            <small class="text-danger d-block">{{ err }}</small>
+            {% endfor %}
+            <small style="display:none">The Password is required and cannot be empty</small>
+          </div>
+
+          <div class="mb-4 d-flex justify-content-between align-items-center">
+            <div class="form-check">
+              {{ form.remember_me(class='form-check-input', id='remember_me') }}
+              {{ form.remember_me.label(class='form-check-label') }}
+            </div>
+            <a href="{{ url_for('auth.forgot_password') }}" class="small">Забули пароль?</a>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" id="login" class="btn btn-primary">Log In</button>
+          </div>
+        </form>
+      </div>
+      <div class="panel-footer text-center">
+        Or Sign Up — <a href="{{ url_for('auth.register') }}">Зареєструватися</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

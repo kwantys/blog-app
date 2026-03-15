@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ title }} — Blog App{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body { background-color: #f8f9fa; }
+    .navbar-brand { font-weight: 700; }
+    .post-card { transition: box-shadow .2s; }
+    .post-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+    .post-content { white-space: pre-wrap; word-break: break-word; }
+    .panel { background: #fff; border: 1px solid #dee2e6; border-radius: .5rem; margin-bottom: 1.5rem; }
+    .panel-heading { padding: 1rem 1.25rem; background: #0d6efd; color: #fff;
+                     border-radius: .5rem .5rem 0 0; font-weight: 600; font-size: 1.1rem; }
+    .panel-body { padding: 1.25rem; }
+    .panel-footer { padding: .75rem 1.25rem; background: #f8f9fa;
+                    border-top: 1px solid #dee2e6; border-radius: 0 0 .5rem .5rem; }
+    .avatar-circle {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: #0d6efd; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; font-weight: 700;
+    }
+    .avatar-circle-sm {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #0d6efd; color: #fff;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: .9rem; font-weight: 700;
+    }
+  </style>
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="{{ url_for('main.index') }}">
+      <i class="bi bi-journal-richtext me-1"></i>Blog App
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" id="dashboard" href="{{ url_for('main.index') }}">
+            <i class="bi bi-house"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="add_new_post_link" href="{{ url_for('posts.create') }}">
+            <i class="bi bi-plus-circle"></i> Add New Post
+          </a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('main.index') }}">
+            <i class="bi bi-house"></i> Головна
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+      <ul class="navbar-nav">
+        {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" id="profile"
+             href="{{ url_for('users.edit_profile') }}">
+            <i class="bi bi-person-circle me-1"></i>My Profile
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="log_out" href="{{ url_for('auth.logout') }}">
+            <i class="bi bi-box-arrow-right me-1"></i>Logout
+          </a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('auth.login') }}">
+            <i class="bi bi-box-arrow-in-right"></i> Sign In
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('auth.register') }}">
+            <i class="bi bi-person-plus"></i> Sign Up
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container my-4">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        {% if category in ('danger', 'error') %}
+        <div id="alert_error" class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% else %}
+        <div id="alert_success" class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="text-center text-muted py-4 border-top">
+  <small>Blog App &copy; 2025 — навчальний проєкт</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

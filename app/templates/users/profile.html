@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-4 mb-4">
+    <div class="card border-0 shadow-sm text-center">
+      <div class="card-body p-4">
+        <div class="avatar-circle mx-auto mb-3" style="width:100px;height:100px;font-size:2.5rem">
+          {{ user.username[0].upper() }}
+        </div>
+        <h1 class="h4 mb-0">{{ user.username }}</h1>
+        <p class="text-muted small">{{ user.email }}</p>
+
+        {% if user.firstname or user.lastname %}
+        <p class="mb-1 small fw-semibold">{{ user.firstname }} {{ user.lastname }}</p>
+        {% endif %}
+
+        {% if user.bio %}
+        <p class="text-secondary small mt-2">{{ user.bio }}</p>
+        {% endif %}
+
+        <div class="row g-0 text-center border-top border-bottom py-3 my-3">
+          <div class="col">
+            <div class="fw-bold">{{ user.posts_count }}</div>
+            <div class="text-muted small">Posts</div>
+          </div>
+          <div class="col border-start">
+            <div class="fw-bold">{{ user.comments_count }}</div>
+            <div class="text-muted small">Comments</div>
+          </div>
+        </div>
+
+        <p class="text-muted small">
+          <i class="bi bi-calendar3 me-1"></i>
+          Joined {{ user.created_at.strftime('%d.%m.%Y') }}
+        </p>
+
+        {% if current_user.is_authenticated and current_user == user %}
+        <div class="d-grid gap-2">
+          <a href="{{ url_for('users.edit_profile') }}" class="btn btn-primary btn-sm">
+            <i class="bi bi-gear me-1"></i>Edit Profile
+          </a>
+          <a href="{{ url_for('users.change_password') }}" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-shield-lock me-1"></i>Change Password
+          </a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-8">
+    <h2 class="h5 mb-3">Posts by {{ user.username }}</h2>
+
+    {% if posts.items %}
+    <table class="table table-hover">
+      <thead class="table-light">
+        <tr>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for post in posts.items %}
+        <tr>
+          <td><a href="{{ url_for('posts.detail', post_id=post.id) }}">{{ post.title }}</a></td>
+          <td>{{ post.created_at.strftime('%d.%m.%Y') }}</td>
+          <td>{{ post.comments_count }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {% if posts.pages > 1 %}
+    <nav>
+      <ul class="pagination pagination-sm justify-content-center">
+        <li class="page-item {% if not posts.has_prev %}disabled{% endif %}">
+          <a class="page-link"
+             href="{{ url_for('users.profile', username=user.username, page=posts.prev_num) }}">
+            <i class="bi bi-chevron-left"></i>
+          </a>
+        </li>
+        {% for p in posts.iter_pages() %}
+          {% if p %}
+          <li class="page-item {% if p == posts.page %}active{% endif %}">
+            <a class="page-link"
+               href="{{ url_for('users.profile', username=user.username, page=p) }}">{{ p }}</a>
+          </li>
+          {% endif %}
+        {% endfor %}
+        <li class="page-item {% if not posts.has_next %}disabled{% endif %}">
+          <a class="page-link"
+             href="{{ url_for('users.profile', username=user.username, page=posts.next_num) }}">
+            <i class="bi bi-chevron-right"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    {% endif %}
+
+    {% else %}
+    <div class="text-center py-4 text-muted">
+      <i class="bi bi-journal-x display-5 d-block mb-2"></i>
+      <p class="small">No posts yet.</p>
+      {% if current_user.is_authenticated and current_user == user %}
+      <a href="{{ url_for('posts.create') }}" class="btn btn-primary btn-sm">Write First!</a>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

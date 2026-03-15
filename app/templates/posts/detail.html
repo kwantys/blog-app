@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-8">
+
+    {# Post #}
+    <article class="card border-0 shadow-sm mb-4">
+      <div class="card-body p-4">
+        <h1 class="h3 mb-1">{{ post.title }}</h1>
+        <p class="text-muted fst-italic mb-3">{{ post.description }}</p>
+        <div class="text-muted small mb-4 d-flex flex-wrap gap-3">
+          <span>
+            <a href="{{ url_for('users.profile', username=post.author.username) }}"
+               class="text-muted text-decoration-none">
+              <i class="bi bi-person-circle me-1"></i>{{ post.author.email }}
+            </a>
+          </span>
+          <span><i class="bi bi-calendar3 me-1"></i>Published {{ post.created_at.strftime('%d %b %Y') }}</span>
+          <span><i class="bi bi-chat me-1"></i>{{ post.comments_count }} comments</span>
+        </div>
+
+        <div class="post-content">{{ post.body }}</div>
+
+        {% if current_user.is_authenticated and post.author == current_user %}
+        <hr class="mt-4">
+        <div class="d-flex gap-2">
+          <a href="{{ url_for('posts.edit', post_id=post.id) }}" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-pencil me-1"></i>Редагувати
+          </a>
+          <form method="POST" action="{{ url_for('posts.delete', post_id=post.id) }}"
+                onsubmit="return confirm('Видалити цей запис?')">
+            {{ form.hidden_tag() }}
+            <button type="submit" class="btn btn-sm btn-outline-danger">
+              <i class="bi bi-trash me-1"></i>Видалити
+            </button>
+          </form>
+        </div>
+        {% endif %}
+      </div>
+    </article>
+
+    {# Comments #}
+    <section>
+      <h2 class="h5 mb-3">
+        <i class="bi bi-chat-dots me-2 text-primary"></i>Comments
+        <span class="badge bg-secondary ms-1">{{ post.comments_count }}</span>
+      </h2>
+
+      {% if comments %}
+        {% for comment in comments %}
+        <div class="card border-0 shadow-sm mb-2">
+          <div class="card-body py-3 px-4">
+            <div class="d-flex justify-content-between align-items-start">
+              <div class="mb-2">
+                <span class="fw-semibold small">{{ comment.name or comment.author.username }}</span>
+                <span class="text-muted small ms-2">{{ comment.created_at.strftime('%d %b %Y %H:%M') }}</span>
+              </div>
+              {% if current_user.is_authenticated and comment.author == current_user %}
+              <form method="POST"
+                    action="{{ url_for('posts.delete_comment', comment_id=comment.id) }}"
+                    onsubmit="return confirm('Видалити коментар?')">
+                {{ form.hidden_tag() }}
+                <button type="submit" class="btn btn-sm btn-link text-danger p-0">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </form>
+              {% endif %}
+            </div>
+            <p class="mb-0 small post-content">{{ comment.content }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <p class="text-muted small">Коментарів ще немає. Будьте першим!</p>
+      {% endif %}
+
+      {# Add comment form #}
+      {% if current_user.is_authenticated %}
+      <div class="card border-0 shadow-sm mt-3">
+        <div class="card-body p-4">
+          <h3 class="h6 mb-3">Add a Comment</h3>
+          <form method="POST" action="{{ url_for('posts.add_comment', post_id=post.id) }}" novalidate>
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3">
+              {{ form.name.label(class='form-label') }}
+              {{ form.name(class='form-control' + (' is-invalid' if form.name.errors else ''),
+                 placeholder='Your name', id='name') }}
+              {% for err in form.name.errors %}
+              <div class="invalid-feedback">{{ err }}</div>
+              {% endfor %}
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="text" id="email" class="form-control"
+                     value="{{ current_user.email }}" readonly>
+            </div>
+
+            <div class="mb-3">
+              {{ form.content.label(class='form-label') }}
+              {{ form.content(class='form-control' + (' is-invalid' if form.content.errors else ''),
+                 rows=3, placeholder='Your message...', id='message') }}
+              {% for err in form.content.errors %}
+              <div class="invalid-feedback">{{ err }}</div>
+              {% endfor %}
+            </div>
+
+            <button type="submit" id="add_comment" class="btn btn-primary btn-sm">Add Comment</button>
+          </form>
+        </div>
+      </div>
+      {% else %}
+      <div class="alert alert-light border mt-3 small">
+        <a href="{{ url_for('auth.login') }}">Увійдіть</a>, щоб залишити коментар.
+      </div>
+      {% endif %}
+    </section>
+
+  </div>
+
+  <aside class="col-lg-4">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body text-center p-4">
+        <div class="avatar-circle mx-auto mb-3">{{ post.author.username[0].upper() }}</div>
+        <h6 class="mb-0">{{ post.author.username }}</h6>
+        {% if post.author.bio %}
+        <p class="text-muted small mt-2 mb-3">{{ post.author.bio }}</p>
+        {% endif %}
+        <a href="{{ url_for('users.profile', username=post.author.username) }}"
+           class="btn btn-outline-primary btn-sm w-100">
+          <i class="bi bi-person me-1"></i>Author Profile
+        </a>
+      </div>
+    </div>
+  </aside>
+</div>
+{% endblock %}

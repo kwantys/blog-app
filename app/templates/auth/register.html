@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-5">
+    <div class="panel">
+      <div class="panel-heading">Sign Up</div>
+      <div class="panel-body">
+        <form method="POST" novalidate id="register-form">
+          {{ form.hidden_tag() }}
+
+          <div class="mb-3">
+            {{ form.username.label(class='form-label') }}
+            {{ form.username(class='form-control' + (' is-invalid' if form.username.errors else ''),
+               placeholder='your_name', id='username', required=True) }}
+            <small>{{ form.username.errors[0] if form.username.errors else '' }}</small>
+          </div>
+
+          <div class="mb-3">
+            {{ form.email.label(class='form-label') }}
+            {{ form.email(class='form-control' + (' is-invalid' if form.email.errors else ''),
+               placeholder='you@example.com', id='email', required=True) }}
+            <small>The email is required and cannot be empty</small>
+            <small>The email address is not valid</small>
+          </div>
+
+          <div class="mb-3">
+            {{ form.password.label(class='form-label') }}
+            {{ form.password(class='form-control' + (' is-invalid' if form.password.errors else ''),
+               id='password', required=True) }}
+            <small>The password is required and cannot be empty</small>
+            <small>Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters</small>
+          </div>
+
+          <div class="mb-4">
+            {{ form.password2.label(class='form-label') }}
+            {{ form.password2(class='form-control' + (' is-invalid' if form.password2.errors else ''),
+               id='confirm', required=True) }}
+            <small>The confirm password is required and cannot be empty</small>
+            <small>Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters</small>
+            <small>{% for err in form.password2.errors %}{{ err }}{% endfor %}</small>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" id="register" class="btn btn-primary">Register Now</button>
+          </div>
+        </form>
+      </div>
+      <div class="panel-footer text-center">
+        Or Sign In — <a href="{{ url_for('auth.login') }}">Увійти</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
