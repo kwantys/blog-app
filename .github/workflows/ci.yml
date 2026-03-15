@@ -3,9 +3,9 @@ name: CI — Blog App
 # Запускається при кожному push та pull request у гілки main і develop
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, master, develop ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, master, develop ]
 
 jobs:
 
