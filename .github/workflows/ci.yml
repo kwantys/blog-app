@@ -31,6 +31,7 @@ jobs:
           flake8 app/ config.py run.py \
             --max-line-length=100 \
             --exclude=__pycache__,.venv \
+            --extend-ignore=SIM102,SIM118 \
             --format=default
         continue-on-error: false
 

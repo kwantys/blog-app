@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, request
-from flask_login import login_required, current_user
+from flask_login import login_required
 from app.main import main_bp
-from app.models import Post, User
+from app.models import Post
 
 
 @main_bp.route('/')
