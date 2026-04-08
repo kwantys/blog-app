@@ -1,0 +1,14 @@
+{
+  "id": "blog-app-env",
+  "name": "Blog App — Local",
+  "values": [
+    { "key": "base_url",      "value": "http://localhost:5000", "enabled": true },
+    { "key": "test_username", "value": "postman_user",          "enabled": true },
+    { "key": "test_email",    "value": "postman@example.com",   "enabled": true },
+    { "key": "test_password", "value": "Password1!",            "enabled": true },
+    { "key": "post_id",       "value": "1",                     "enabled": true },
+    { "key": "csrf_token",    "value": "",                      "enabled": true },
+    { "key": "session_cookie","value": "",                      "enabled": true }
+  ],
+  "_postman_variable_scope": "environment"
+}
