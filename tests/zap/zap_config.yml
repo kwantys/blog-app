@@ -1,0 +1,84 @@
+---
+# zap_config.yml — OWASP ZAP Automation Framework конфігурація
+# Документація: https://www.zaproxy.org/docs/automate/automation-framework/
+#
+# Запуск:
+#   zap.sh -cmd -autorun tests/zap/zap_config.yml
+# або через Docker:
+#   docker run -v $(pwd):/zap/wrk -t ghcr.io/zaproxy/zaproxy:stable \
+#     zap.sh -cmd -autorun /zap/wrk/tests/zap/zap_config.yml
+
+env:
+  contexts:
+    - name: "Blog App"
+      urls:
+        - "http://localhost:5000"
+      includePaths:
+        - "http://localhost:5000.*"
+      excludePaths:
+        - "http://localhost:5000/auth/logout"   # уникаємо logout під час сканування
+
+      # ── Аутентифікація через форму входу ──────────────────────────
+      authentication:
+        method: "form"
+        parameters:
+          loginPageUrl: "http://localhost:5000/auth/login"
+          loginRequestData: "username={%username%}&password={%password%}&csrf_token={%csrf_token%}"
+          loginPagePostData: ""
+        verification:
+          method: "response"
+          loggedInRegex:   "\\Qid=\"log_out\"\\E"
+          loggedOutRegex:  "\\QSign In\\E"
+
+      sessionManagement:
+        method: "cookie"
+        parameters: {}
+
+      users:
+        - name: "zap_testuser"
+          credentials:
+            username: "zap_test_user"
+            password: "Password1!"
+
+  parameters:
+    failOnError: false
+    progressToStdout: true
+
+jobs:
+  # ── 1. Пасивне сканування (без активних атак) ────────────────────
+  - type: spider
+    parameters:
+      context: "Blog App"
+      user: "zap_testuser"
+      url: "http://localhost:5000"
+      maxDuration: 2
+      acceptCookies: true
+
+  # ── 2. AJAX Spider (для динамічного контенту) ────────────────────
+  - type: spiderAjax
+    parameters:
+      context: "Blog App"
+      url: "http://localhost:5000"
+      maxDuration: 2
+
+  # ── 3. Пасивне сканування ────────────────────────────────────────
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 5
+
+  # ── 4. Активне сканування (з авторизацією) ───────────────────────
+  - type: activeScan
+    parameters:
+      context: "Blog App"
+      user: "zap_testuser"
+      maxRuleDurationInMins: 5
+      maxScanDurationInMins: 30
+
+  # ── 5. Генерація звіту ────────────────────────────────────────────
+  - type: report
+    parameters:
+      template: "traditional-html"
+      reportDir: "tests/zap/results"
+      reportFile: "zap_report"
+      reportTitle: "Blog App — OWASP ZAP Security Scan"
+      reportDescription: "Динамічний аналіз безпеки Blog App"
