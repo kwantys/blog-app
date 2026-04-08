@@ -1,4 +1,5 @@
 import logging
+from urllib.parse import urlparse, urljoin
 from flask import render_template, redirect, url_for, flash, request, current_app
 from flask_login import login_user, logout_user, login_required, current_user
 from sqlalchemy.exc import IntegrityError
@@ -8,6 +9,24 @@ from app.auth.forms import RegistrationForm, LoginForm, ForgotPasswordForm, Rese
 from app.models import User
 
 logger = logging.getLogger(__name__)
+
+
+def is_safe_url(target: str) -> bool:
+    """
+    Перевіряє що URL є відносним і належить тому ж хосту.
+    Захищає від CWE-601 (Open Redirect).
+
+    Приклади:
+        is_safe_url('/posts/1')          → True
+        is_safe_url('https://evil.com')  → False
+        is_safe_url('//evil.com/path')   → False
+    """
+    ref_url  = urlparse(request.host_url)
+    test_url = urlparse(urljoin(request.host_url, target))
+    return (
+        test_url.scheme in ('http', 'https')
+        and ref_url.netloc == test_url.netloc
+    )
 
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
@@ -46,7 +65,16 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
+
+            # ── ВИПРАВЛЕННЯ CWE-601: валідація next_page ──────────────
+            # До виправлення: next_page використовувався без перевірки,
+            # що дозволяло атаку /login?next=https://evil.com
             next_page = request.args.get('next')
+            if next_page and not is_safe_url(next_page):
+                logger.warning('Blocked unsafe redirect to: %s', next_page)
+                next_page = None
+            # ──────────────────────────────────────────────────────────
+
             flash(f'Ласкаво просимо, {user.username}!', 'success')
             return redirect(next_page or url_for('main.index'))
         flash('Невірний username або пароль.', 'danger')
@@ -73,16 +101,14 @@ def forgot_password():
         if user:
             token = user.get_reset_token()
             reset_url = url_for('auth.reset_password', token=token, _external=True)
-            # In production, send via email. For dev — print to console.
             mail_server = current_app.config.get('MAIL_SERVER')
             if mail_server:
                 _send_reset_email(user, reset_url)
             else:
-                logger.warning('[DEV] Password reset link for %s: %s', user.email, reset_url)
-                print(f'\n[DEV] Password reset link: {reset_url}\n')
-        # Always show success to prevent email enumeration
+                logger.warning('[DEV] Password reset link for %s: %s',
+                               user.email, reset_url)
         flash('Якщо такий email зареєстровано, посилання для скидання паролю '
-              'буде надіслано (перевірте консоль у режимі розробки).', 'info')
+              'буде надіслано.', 'info')
         return redirect(url_for('auth.login'))
 
     return render_template('auth/forgot_password.html', title='Забули пароль?', form=form)
@@ -109,17 +135,18 @@ def reset_password(token):
 
 
 def _send_reset_email(user, reset_url):
-    """Send password reset email via Flask-Mail (optional)."""
+    """Надсилає email для скидання паролю."""
     try:
         from flask_mail import Mail, Message
         mail = Mail(current_app)
         msg = Message(
             subject='Скидання паролю — Blog App',
             recipients=[user.email],
-            body=f'Для скидання паролю перейдіть за посиланням:\n{reset_url}\n\n'
-                 f'Якщо ви не надсилали цей запит, просто ігноруйте листа.',
+            body=(
+                f'Для скидання паролю перейдіть за посиланням:\n{reset_url}\n\n'
+                f'Якщо ви не надсилали цей запит, просто ігноруйте листа.'
+            ),
         )
         mail.send(msg)
     except Exception as e:
         logger.error('Failed to send reset email: %s', e)
-        print(f'\n[DEV] Password reset link: {reset_url}\n')
