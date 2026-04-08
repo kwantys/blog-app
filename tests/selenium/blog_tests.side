@@ -1,0 +1,980 @@
+{
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "version": "2.0",
+  "name": "Blog App — Record & Play Tests",
+  "url": "http://localhost:5000",
+  "tests": [
+    {
+      "id": "test-01-register-success",
+      "name": "TC-01: Успішна реєстрація нового користувача",
+      "commands": [
+        {
+          "id": "cmd-01-01",
+          "comment": "Відкрити сторінку реєстрації",
+          "command": "open",
+          "target": "/register",
+          "value": ""
+        },
+        {
+          "id": "cmd-01-02",
+          "comment": "Перевірити заголовок сторінки",
+          "command": "assertText",
+          "target": "css=.panel-heading",
+          "value": "Sign Up"
+        },
+        {
+          "id": "cmd-01-03",
+          "comment": "Ввести імʼя користувача",
+          "command": "type",
+          "target": "id=username",
+          "value": "testuser_selenium"
+        },
+        {
+          "id": "cmd-01-04",
+          "comment": "Ввести email",
+          "command": "type",
+          "target": "id=email",
+          "value": "selenium@example.com"
+        },
+        {
+          "id": "cmd-01-05",
+          "comment": "Ввести пароль",
+          "command": "type",
+          "target": "id=password",
+          "value": "Password1!"
+        },
+        {
+          "id": "cmd-01-06",
+          "comment": "Підтвердити пароль",
+          "command": "type",
+          "target": "id=confirm",
+          "value": "Password1!"
+        },
+        {
+          "id": "cmd-01-07",
+          "comment": "Натиснути кнопку реєстрації",
+          "command": "click",
+          "target": "id=register",
+          "value": ""
+        },
+        {
+          "id": "cmd-01-08",
+          "comment": "Перевірити повідомлення про успіх",
+          "command": "assertElementPresent",
+          "target": "id=alert_success",
+          "value": ""
+        },
+        {
+          "id": "cmd-01-09",
+          "comment": "Перевірити текст повідомлення",
+          "command": "assertTextPresent",
+          "target": "",
+          "value": "Congrats"
+        },
+        {
+          "id": "cmd-01-10",
+          "comment": "Перевірити редирект на головну",
+          "command": "assertLocation",
+          "target": "http://localhost:5000/",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "test-02-register-duplicate-email",
+      "name": "TC-02: Реєстрація з email що вже існує",
+      "commands": [
+        {
+          "id": "cmd-02-01",
+          "comment": "Відкрити сторінку реєстрації",
+          "command": "open",
+          "target": "/register",
+          "value": ""
+        },
+        {
+          "id": "cmd-02-02",
+          "comment": "Ввести інший username але той самий email",
+          "command": "type",
+          "target": "id=username",
+          "value": "another_user"
+        },
+        {
+          "id": "cmd-02-03",
+          "command": "type",
+          "target": "id=email",
+          "value": "selenium@example.com",
+          "comment": "Email вже зареєстрований (з TC-01)"
+        },
+        {
+          "id": "cmd-02-04",
+          "command": "type",
+          "target": "id=password",
+          "value": "Password1!",
+          "comment": ""
+        },
+        {
+          "id": "cmd-02-05",
+          "command": "type",
+          "target": "id=confirm",
+          "value": "Password1!",
+          "comment": ""
+        },
+        {
+          "id": "cmd-02-06",
+          "command": "click",
+          "target": "id=register",
+          "value": "",
+          "comment": "Спроба реєстрації"
+        },
+        {
+          "id": "cmd-02-07",
+          "comment": "Залишаємось на сторінці реєстрації (немає редиректу)",
+          "command": "assertLocation",
+          "target": "http://localhost:5000/auth/register",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "test-03-register-password-mismatch",
+      "name": "TC-03: Реєстрація — паролі не співпадають",
+      "commands": [
+        {
+          "id": "cmd-03-01",
+          "command": "open",
+          "target": "/register",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-03-02",
+          "command": "type",
+          "target": "id=username",
+          "value": "mismatch_user",
+          "comment": ""
+        },
+        {
+          "id": "cmd-03-03",
+          "command": "type",
+          "target": "id=email",
+          "value": "mismatch@example.com",
+          "comment": ""
+        },
+        {
+          "id": "cmd-03-04",
+          "command": "type",
+          "target": "id=password",
+          "value": "Password1!",
+          "comment": ""
+        },
+        {
+          "id": "cmd-03-05",
+          "command": "type",
+          "target": "id=confirm",
+          "value": "DifferentPass!",
+          "comment": "Навмисно різний пароль"
+        },
+        {
+          "id": "cmd-03-06",
+          "command": "click",
+          "target": "id=register",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-03-07",
+          "comment": "Форма не пройшла валідацію — залишаємось на /auth/register",
+          "command": "assertLocation",
+          "target": "http://localhost:5000/auth/register",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "test-04-login-success",
+      "name": "TC-04: Успішний вхід зареєстрованого користувача",
+      "commands": [
+        {
+          "id": "cmd-04-01",
+          "command": "open",
+          "target": "/login",
+          "value": "",
+          "comment": "Відкрити сторінку входу"
+        },
+        {
+          "id": "cmd-04-02",
+          "command": "assertText",
+          "target": "css=.panel-heading",
+          "value": "Sign In",
+          "comment": "Перевірити заголовок"
+        },
+        {
+          "id": "cmd-04-03",
+          "command": "type",
+          "target": "id=username",
+          "value": "testuser_selenium",
+          "comment": "Username зі TC-01"
+        },
+        {
+          "id": "cmd-04-04",
+          "command": "type",
+          "target": "id=password",
+          "value": "Password1!",
+          "comment": ""
+        },
+        {
+          "id": "cmd-04-05",
+          "command": "click",
+          "target": "id=login",
+          "value": "",
+          "comment": "Натиснути Log In"
+        },
+        {
+          "id": "cmd-04-06",
+          "command": "assertElementPresent",
+          "target": "id=alert_success",
+          "value": "",
+          "comment": "Повідомлення про успіх"
+        },
+        {
+          "id": "cmd-04-07",
+          "command": "assertElementPresent",
+          "target": "id=log_out",
+          "value": "",
+          "comment": "Кнопка Logout з'явилася — підтверджує вхід"
+        },
+        {
+          "id": "cmd-04-08",
+          "command": "assertLocation",
+          "target": "http://localhost:5000/",
+          "value": "",
+          "comment": "Редирект на головну"
+        }
+      ]
+    },
+    {
+      "id": "test-05-login-wrong-password",
+      "name": "TC-05: Вхід з невірним паролем",
+      "commands": [
+        {
+          "id": "cmd-05-01",
+          "command": "open",
+          "target": "/login",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-05-02",
+          "command": "type",
+          "target": "id=username",
+          "value": "testuser_selenium",
+          "comment": ""
+        },
+        {
+          "id": "cmd-05-03",
+          "command": "type",
+          "target": "id=password",
+          "value": "WrongPassword!",
+          "comment": "Невірний пароль"
+        },
+        {
+          "id": "cmd-05-04",
+          "command": "click",
+          "target": "id=login",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-05-05",
+          "comment": "Повідомлення про помилку має з'явитися",
+          "command": "assertElementPresent",
+          "target": "id=alert_error",
+          "value": ""
+        },
+        {
+          "id": "cmd-05-06",
+          "command": "assertLocation",
+          "target": "http://localhost:5000/auth/login",
+          "value": "",
+          "comment": "Залишаємось на сторінці входу"
+        }
+      ]
+    },
+    {
+      "id": "test-06-login-nonexistent-user",
+      "name": "TC-06: Вхід неіснуючого користувача",
+      "commands": [
+        {
+          "id": "cmd-06-01",
+          "command": "open",
+          "target": "/login",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-06-02",
+          "command": "type",
+          "target": "id=username",
+          "value": "nobody_xyz_123",
+          "comment": "Неіснуючий username"
+        },
+        {
+          "id": "cmd-06-03",
+          "command": "type",
+          "target": "id=password",
+          "value": "Password1!",
+          "comment": ""
+        },
+        {
+          "id": "cmd-06-04",
+          "command": "click",
+          "target": "id=login",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-06-05",
+          "command": "assertElementPresent",
+          "target": "id=alert_error",
+          "value": "",
+          "comment": "Помилка авторизації"
+        }
+      ]
+    },
+    {
+      "id": "test-07-forgot-password",
+      "name": "TC-07: Форма скидання паролю",
+      "commands": [
+        {
+          "id": "cmd-07-01",
+          "command": "open",
+          "target": "/forgot",
+          "value": "",
+          "comment": "Відкрити через alias URL"
+        },
+        {
+          "id": "cmd-07-02",
+          "command": "assertText",
+          "target": "css=.panel-heading",
+          "value": "Forgot Password",
+          "comment": "Перевірити заголовок"
+        },
+        {
+          "id": "cmd-07-03",
+          "command": "type",
+          "target": "id=email",
+          "value": "selenium@example.com",
+          "comment": "Існуючий email"
+        },
+        {
+          "id": "cmd-07-04",
+          "command": "click",
+          "target": "id=forgot",
+          "value": "",
+          "comment": "Натиснути Submit"
+        },
+        {
+          "id": "cmd-07-05",
+          "command": "assertLocation",
+          "target": "http://localhost:5000/auth/login",
+          "value": "",
+          "comment": "Редирект на login після submit"
+        },
+        {
+          "id": "cmd-07-06",
+          "command": "assertElementPresent",
+          "target": "css=.alert",
+          "value": "",
+          "comment": "Інформаційне повідомлення з'явилося"
+        }
+      ]
+    },
+    {
+      "id": "test-08-create-post",
+      "name": "TC-08: Створення нового запису (post)",
+      "commands": [
+        {
+          "id": "cmd-08-01",
+          "command": "open",
+          "target": "/login",
+          "value": "",
+          "comment": "Спочатку увійти"
+        },
+        {
+          "id": "cmd-08-02",
+          "command": "type",
+          "target": "id=username",
+          "value": "testuser_selenium",
+          "comment": ""
+        },
+        {
+          "id": "cmd-08-03",
+          "command": "type",
+          "target": "id=password",
+          "value": "Password1!",
+          "comment": ""
+        },
+        {
+          "id": "cmd-08-04",
+          "command": "click",
+          "target": "id=login",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-08-05",
+          "command": "open",
+          "target": "/post",
+          "value": "",
+          "comment": "Перейти до форми створення запису"
+        },
+        {
+          "id": "cmd-08-06",
+          "command": "assertText",
+          "target": "id=add_post_head",
+          "value": "Add a Blog/Post",
+          "comment": "Перевірити заголовок форми"
+        },
+        {
+          "id": "cmd-08-07",
+          "command": "type",
+          "target": "id=title",
+          "value": "Тестовий пост Selenium",
+          "comment": "Заголовок посту"
+        },
+        {
+          "id": "cmd-08-08",
+          "command": "type",
+          "target": "id=description",
+          "value": "Короткий опис тестового посту",
+          "comment": ""
+        },
+        {
+          "id": "cmd-08-09",
+          "command": "type",
+          "target": "id=body",
+          "value": "Детальний текст тестового запису, створеного за допомогою Selenium IDE для перевірки функціоналу блогу.",
+          "comment": ""
+        },
+        {
+          "id": "cmd-08-10",
+          "command": "click",
+          "target": "id=post",
+          "value": "",
+          "comment": "Натиснути Add Post"
+        },
+        {
+          "id": "cmd-08-11",
+          "command": "assertTextPresent",
+          "target": "",
+          "value": "Blog Post posted successfully!",
+          "comment": "Flash-повідомлення про успіх"
+        },
+        {
+          "id": "cmd-08-12",
+          "command": "assertTextPresent",
+          "target": "",
+          "value": "Тестовий пост Selenium",
+          "comment": "Пост відображається в таблиці"
+        }
+      ]
+    },
+    {
+      "id": "test-09-create-post-empty-title",
+      "name": "TC-09: Створення посту без заголовку (негативний)",
+      "commands": [
+        {
+          "id": "cmd-09-01",
+          "command": "open",
+          "target": "/login",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-09-02",
+          "command": "type",
+          "target": "id=username",
+          "value": "testuser_selenium",
+          "comment": ""
+        },
+        {
+          "id": "cmd-09-03",
+          "command": "type",
+          "target": "id=password",
+          "value": "Password1!",
+          "comment": ""
+        },
+        {
+          "id": "cmd-09-04",
+          "command": "click",
+          "target": "id=login",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-09-05",
+          "command": "open",
+          "target": "/post",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-09-06",
+          "command": "type",
+          "target": "id=description",
+          "value": "Опис без заголовку",
+          "comment": ""
+        },
+        {
+          "id": "cmd-09-07",
+          "command": "type",
+          "target": "id=body",
+          "value": "Тіло посту без заголовку.",
+          "comment": ""
+        },
+        {
+          "id": "cmd-09-08",
+          "command": "click",
+          "target": "id=post",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-09-09",
+          "command": "assertLocation",
+          "target": "http://localhost:5000/posts/create",
+          "value": "",
+          "comment": "Залишаємось на формі — пост не створено"
+        }
+      ]
+    },
+    {
+      "id": "test-10-add-comment",
+      "name": "TC-10: Додавання коментаря до посту",
+      "commands": [
+        {
+          "id": "cmd-10-01",
+          "command": "open",
+          "target": "/login",
+          "value": "",
+          "comment": "Увійти"
+        },
+        {
+          "id": "cmd-10-02",
+          "command": "type",
+          "target": "id=username",
+          "value": "testuser_selenium",
+          "comment": ""
+        },
+        {
+          "id": "cmd-10-03",
+          "command": "type",
+          "target": "id=password",
+          "value": "Password1!",
+          "comment": ""
+        },
+        {
+          "id": "cmd-10-04",
+          "command": "click",
+          "target": "id=login",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-10-05",
+          "command": "open",
+          "target": "/posts/1",
+          "value": "",
+          "comment": "Відкрити деталі першого посту"
+        },
+        {
+          "id": "cmd-10-06",
+          "command": "type",
+          "target": "id=name",
+          "value": "Selenium Tester",
+          "comment": "Заповнити ім'я коментатора"
+        },
+        {
+          "id": "cmd-10-07",
+          "command": "type",
+          "target": "id=message",
+          "value": "Це автоматичний коментар від Selenium IDE!",
+          "comment": "Текст коментаря"
+        },
+        {
+          "id": "cmd-10-08",
+          "command": "click",
+          "target": "id=add_comment",
+          "value": "",
+          "comment": "Натиснути Add Comment"
+        },
+        {
+          "id": "cmd-10-09",
+          "command": "assertTextPresent",
+          "target": "",
+          "value": "Comment added to the Post successfully!",
+          "comment": "Перевірити успішне додавання"
+        }
+      ]
+    },
+    {
+      "id": "test-11-edit-profile",
+      "name": "TC-11: Редагування профілю користувача",
+      "commands": [
+        {
+          "id": "cmd-11-01",
+          "command": "open",
+          "target": "/login",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-11-02",
+          "command": "type",
+          "target": "id=username",
+          "value": "testuser_selenium",
+          "comment": ""
+        },
+        {
+          "id": "cmd-11-03",
+          "command": "type",
+          "target": "id=password",
+          "value": "Password1!",
+          "comment": ""
+        },
+        {
+          "id": "cmd-11-04",
+          "command": "click",
+          "target": "id=login",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-11-05",
+          "command": "open",
+          "target": "/profile",
+          "value": "",
+          "comment": "Перейти до профілю"
+        },
+        {
+          "id": "cmd-11-06",
+          "command": "assertText",
+          "target": "id=profile_heading",
+          "value": "Your Profile",
+          "comment": "Заголовок сторінки профілю"
+        },
+        {
+          "id": "cmd-11-07",
+          "command": "type",
+          "target": "id=firstname",
+          "value": "Selenium",
+          "comment": "Ввести ім'я"
+        },
+        {
+          "id": "cmd-11-08",
+          "command": "type",
+          "target": "id=lastname",
+          "value": "Tester",
+          "comment": "Ввести прізвище"
+        },
+        {
+          "id": "cmd-11-09",
+          "command": "type",
+          "target": "id=age",
+          "value": "25",
+          "comment": ""
+        },
+        {
+          "id": "cmd-11-10",
+          "command": "type",
+          "target": "id=bio",
+          "value": "Automated test user created by Selenium IDE",
+          "comment": "Біо"
+        },
+        {
+          "id": "cmd-11-11",
+          "command": "click",
+          "target": "id=update_profile",
+          "value": "",
+          "comment": "Зберегти профіль"
+        },
+        {
+          "id": "cmd-11-12",
+          "command": "assertTextPresent",
+          "target": "",
+          "value": "Profile updated successfully!",
+          "comment": "Повідомлення про успіх"
+        }
+      ]
+    },
+    {
+      "id": "test-12-navbar-navigation",
+      "name": "TC-12: Навігація через navbar (авторизований користувач)",
+      "commands": [
+        {
+          "id": "cmd-12-01",
+          "command": "open",
+          "target": "/login",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-12-02",
+          "command": "type",
+          "target": "id=username",
+          "value": "testuser_selenium",
+          "comment": ""
+        },
+        {
+          "id": "cmd-12-03",
+          "command": "type",
+          "target": "id=password",
+          "value": "Password1!",
+          "comment": ""
+        },
+        {
+          "id": "cmd-12-04",
+          "command": "click",
+          "target": "id=login",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-12-05",
+          "command": "assertElementPresent",
+          "target": "id=add_new_post_link",
+          "value": "",
+          "comment": "Посилання Add New Post є в navbar"
+        },
+        {
+          "id": "cmd-12-06",
+          "command": "click",
+          "target": "id=add_new_post_link",
+          "value": "",
+          "comment": "Перейти до форми нового посту через navbar"
+        },
+        {
+          "id": "cmd-12-07",
+          "command": "assertLocation",
+          "target": "http://localhost:5000/posts/create",
+          "value": "",
+          "comment": "Перейшли на сторінку створення"
+        },
+        {
+          "id": "cmd-12-08",
+          "command": "click",
+          "target": "id=dashboard",
+          "value": "",
+          "comment": "Повернутись на Dashboard"
+        },
+        {
+          "id": "cmd-12-09",
+          "command": "assertLocation",
+          "target": "http://localhost:5000/",
+          "value": "",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "id": "test-13-logout",
+      "name": "TC-13: Вихід з системи (logout)",
+      "commands": [
+        {
+          "id": "cmd-13-01",
+          "command": "open",
+          "target": "/login",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-13-02",
+          "command": "type",
+          "target": "id=username",
+          "value": "testuser_selenium",
+          "comment": ""
+        },
+        {
+          "id": "cmd-13-03",
+          "command": "type",
+          "target": "id=password",
+          "value": "Password1!",
+          "comment": ""
+        },
+        {
+          "id": "cmd-13-04",
+          "command": "click",
+          "target": "id=login",
+          "value": "",
+          "comment": ""
+        },
+        {
+          "id": "cmd-13-05",
+          "command": "assertElementPresent",
+          "target": "id=log_out",
+          "value": "",
+          "comment": "Підтверджуємо, що залогінені"
+        },
+        {
+          "id": "cmd-13-06",
+          "command": "click",
+          "target": "id=log_out",
+          "value": "",
+          "comment": "Натиснути Logout"
+        },
+        {
+          "id": "cmd-13-07",
+          "command": "assertElementNotPresent",
+          "target": "id=log_out",
+          "value": "",
+          "comment": "Кнопка Logout зникла — вийшли"
+        },
+        {
+          "id": "cmd-13-08",
+          "command": "assertElementPresent",
+          "target": "css=.alert",
+          "value": "",
+          "comment": "Повідомлення про успішний вихід"
+        }
+      ]
+    },
+    {
+      "id": "test-14-create-post-unauthenticated",
+      "name": "TC-14: Спроба створити пост без авторизації (негативний)",
+      "commands": [
+        {
+          "id": "cmd-14-01",
+          "command": "open",
+          "target": "/post",
+          "value": "",
+          "comment": "Спроба перейти на форму без входу"
+        },
+        {
+          "id": "cmd-14-02",
+          "command": "assertNotLocation",
+          "target": "http://localhost:5000/posts/create",
+          "value": "",
+          "comment": "Нас перекинуло — не потрапили на форму"
+        },
+        {
+          "id": "cmd-14-03",
+          "command": "assertTextPresent",
+          "target": "",
+          "value": "Sign In",
+          "comment": "Опинились на сторінці входу"
+        }
+      ]
+    },
+    {
+      "id": "test-15-post-dashboard-listing",
+      "name": "TC-15: Перевірка відображення постів на Dashboard",
+      "commands": [
+        {
+          "id": "cmd-15-01",
+          "command": "open",
+          "target": "/",
+          "value": "",
+          "comment": "Відкрити головну"
+        },
+        {
+          "id": "cmd-15-02",
+          "command": "assertElementPresent",
+          "target": "id=post_listing",
+          "value": "",
+          "comment": "Таблиця з постами присутня"
+        },
+        {
+          "id": "cmd-15-03",
+          "command": "assertTextPresent",
+          "target": "",
+          "value": "Тестовий пост Selenium",
+          "comment": "Пост з TC-08 відображається"
+        },
+        {
+          "id": "cmd-15-04",
+          "command": "assertTextPresent",
+          "target": "",
+          "value": "Author",
+          "comment": "Є колонка Author"
+        },
+        {
+          "id": "cmd-15-05",
+          "command": "assertTextPresent",
+          "target": "",
+          "value": "Published",
+          "comment": "Є дата публікації"
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "suite-auth",
+      "name": "Автентифікація та авторизація",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 300,
+      "tests": [
+        "test-01-register-success",
+        "test-02-register-duplicate-email",
+        "test-03-register-password-mismatch",
+        "test-04-login-success",
+        "test-05-login-wrong-password",
+        "test-06-login-nonexistent-user",
+        "test-07-forgot-password",
+        "test-13-logout",
+        "test-14-create-post-unauthenticated"
+      ]
+    },
+    {
+      "id": "suite-posts",
+      "name": "Управління постами та коментарями",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 300,
+      "tests": [
+        "test-08-create-post",
+        "test-09-create-post-empty-title",
+        "test-10-add-comment",
+        "test-15-post-dashboard-listing"
+      ]
+    },
+    {
+      "id": "suite-profile",
+      "name": "Профіль користувача та навігація",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 300,
+      "tests": [
+        "test-11-edit-profile",
+        "test-12-navbar-navigation"
+      ]
+    },
+    {
+      "id": "suite-all",
+      "name": "Усі тести (повний запуск)",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 600,
+      "tests": [
+        "test-01-register-success",
+        "test-02-register-duplicate-email",
+        "test-03-register-password-mismatch",
+        "test-04-login-success",
+        "test-05-login-wrong-password",
+        "test-06-login-nonexistent-user",
+        "test-07-forgot-password",
+        "test-08-create-post",
+        "test-09-create-post-empty-title",
+        "test-10-add-comment",
+        "test-11-edit-profile",
+        "test-12-navbar-navigation",
+        "test-13-logout",
+        "test-14-create-post-unauthenticated",
+        "test-15-post-dashboard-listing"
+      ]
+    }
+  ],
+  "urls": ["http://localhost:5000"],
+  "plugins": []
+}
