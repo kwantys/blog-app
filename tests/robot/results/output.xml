@@ -1,0 +1,2235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.6 on win32)" generated="2026-04-08T11:37:34.587874" rpa="false" schemaversion="5">
+<suite id="s1" name="Blog Tests" source="C:\Users\lowel\OneDrive\Рабочий стол\магістатура 1 курс\2 семестр\Автоматизація тестування програмного забезпечення\blog_app\tests\robot\blog_tests.robot">
+<kw name="Відкрити браузер до додатку" owner="keywords" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:34.917522" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5000'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:37:34.917522" elapsed="5.433486"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-04-08T11:37:40.351008" elapsed="0.732242"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${TIMEOUT}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2026-04-08T11:37:41.084245" elapsed="0.002133"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:37:34.916521" elapsed="6.169857"/>
+</kw>
+<test id="s1-t1" name="TC-01 Сторінка реєстрації відкривається коректно" line="17">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:37:41.373450" elapsed="1.390144"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:42.764592" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:37:42.763594" elapsed="0.574843"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:37:41.373450" elapsed="1.964987"/>
+</kw>
+<kw name="Перейти на сторінку реєстрації" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:43.338437" level="INFO">Opening url 'http://localhost:5000/register'</msg>
+<arg>${BASE_URL}/register</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:37:43.338437" elapsed="0.368068"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:37:43.338437" elapsed="0.368068"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:43.730940" level="INFO">Current page contains text 'Sign Up'.</msg>
+<arg>Sign Up</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-04-08T11:37:43.707504" elapsed="0.023436"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:43.754547" level="INFO">Element 'id=username' is displayed.</msg>
+<arg>id=username</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:37:43.730940" elapsed="0.023607"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:43.781839" level="INFO">Element 'id=email' is displayed.</msg>
+<arg>id=email</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:37:43.754547" elapsed="0.027292"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:43.802780" level="INFO">Element 'id=password' is displayed.</msg>
+<arg>id=password</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:37:43.781839" elapsed="0.020941"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:43.825778" level="INFO">Element 'id=confirm' is displayed.</msg>
+<arg>id=confirm</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:37:43.803779" elapsed="0.021999"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:43.842525" level="INFO">Element 'id=register' is displayed.</msg>
+<arg>id=register</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:37:43.825778" elapsed="0.016747"/>
+</kw>
+<tag>blog_app</tag>
+<tag>registration</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-04-08T11:37:41.086378" elapsed="2.756147"/>
+</test>
+<test id="s1-t2" name="TC-02 Успішна реєстрація нового користувача" line="28">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:37:43.850346" elapsed="0.000000"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:43.850346" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:37:43.850346" elapsed="0.102718"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:37:43.850346" elapsed="0.102718"/>
+</kw>
+<kw name="Зареєструвати користувача" owner="keywords">
+<kw name="Перейти на сторінку реєстрації" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:43.953064" level="INFO">Opening url 'http://localhost:5000/register'</msg>
+<arg>${BASE_URL}/register</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:37:43.953064" elapsed="0.338513"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:37:43.953064" elapsed="0.338956"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:44.292020" level="INFO">Typing text 'rf_user_01' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:37:44.292020" elapsed="0.126814"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:44.419166" level="INFO">Typing text 'rf_user_01@example.com' into text field 'id=email'.</msg>
+<arg>id=email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:37:44.419166" elapsed="0.098754"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:44.518921" level="INFO">Typing text 'Password1!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:37:44.518921" elapsed="0.071800"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:44.591877" level="INFO">Typing text 'Password1!' into text field 'id=confirm'.</msg>
+<arg>id=confirm</arg>
+<arg>${confirm}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:37:44.590721" elapsed="0.067421"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:37:44.658142" elapsed="0.025581"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:37:44.684101" elapsed="0.299008"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:44.984111" level="INFO">Executing JavaScript:
+document.querySelector('#register').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:37:44.983109" elapsed="0.351210"/>
+</kw>
+<arg>id=register</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:37:44.658142" elapsed="0.676177"/>
+</kw>
+<arg>${UNIQUE_USER}</arg>
+<arg>${UNIQUE_EMAIL}</arg>
+<arg>Password1!</arg>
+<arg>Password1!</arg>
+<status status="PASS" start="2026-04-08T11:37:43.953064" elapsed="1.381255"/>
+</kw>
+<kw name="Перевірити успішне повідомлення" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:55.457551" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-34.png"&gt;&lt;img src="selenium-screenshot-34.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-04-08T11:37:55.457551" level="FAIL">Element 'id=alert_success' not visible after 10 seconds.</msg>
+<arg>id=alert_success</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="FAIL" start="2026-04-08T11:37:45.334319" elapsed="10.123232">Element 'id=alert_success' not visible after 10 seconds.</status>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<arg>id=alert_success</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2026-04-08T11:37:55.457551" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2026-04-08T11:37:45.334319" elapsed="10.123232">Element 'id=alert_success' not visible after 10 seconds.</status>
+</kw>
+<kw name="Перевірити що сторінка містить текст" owner="keywords">
+<arg>Congrats</arg>
+<status status="NOT RUN" start="2026-04-08T11:37:55.457551" elapsed="0.000000"/>
+</kw>
+<kw name="Перевірити що знаходимось на сторінці" owner="keywords">
+<arg>${BASE_URL}/</arg>
+<status status="NOT RUN" start="2026-04-08T11:37:55.457551" elapsed="0.000000"/>
+</kw>
+<tag>blog_app</tag>
+<tag>positive</tag>
+<tag>registration</tag>
+<status status="FAIL" start="2026-04-08T11:37:43.842525" elapsed="11.615026">Element 'id=alert_success' not visible after 10 seconds.</status>
+</test>
+<test id="s1-t3" name="TC-03 Реєстрація з паролями що не співпадають" line="40">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:37:55.473526" elapsed="0.000000"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:55.473526" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:37:55.473526" elapsed="0.048051"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:37:55.473526" elapsed="0.048051"/>
+</kw>
+<kw name="Зареєструвати користувача" owner="keywords">
+<kw name="Перейти на сторінку реєстрації" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:55.524586" level="INFO">Opening url 'http://localhost:5000/register'</msg>
+<arg>${BASE_URL}/register</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:37:55.523595" elapsed="0.346164"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:37:55.522577" elapsed="0.347182"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:55.869759" level="INFO">Typing text 'rf_mismatch' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:37:55.869759" elapsed="0.072572"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:55.943336" level="INFO">Typing text 'mismatch@example.com' into text field 'id=email'.</msg>
+<arg>id=email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:37:55.943336" elapsed="0.077459"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:56.020795" level="INFO">Typing text 'Password1!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:37:56.020795" elapsed="0.074576"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:56.095371" level="INFO">Typing text 'DifferentPass!' into text field 'id=confirm'.</msg>
+<arg>id=confirm</arg>
+<arg>${confirm}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:37:56.095371" elapsed="0.074513"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:37:56.171101" elapsed="0.003578"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:37:56.174679" elapsed="0.291599"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:56.468289" level="INFO">Executing JavaScript:
+document.querySelector('#register').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:37:56.466278" elapsed="0.350967"/>
+</kw>
+<arg>id=register</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:37:56.169884" elapsed="0.647361"/>
+</kw>
+<arg>rf_mismatch</arg>
+<arg>mismatch@example.com</arg>
+<arg>Password1!</arg>
+<arg>DifferentPass!</arg>
+<status status="PASS" start="2026-04-08T11:37:55.522577" elapsed="1.294668"/>
+</kw>
+<kw name="Перевірити що знаходимось на сторінці" owner="keywords">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:56.824348" level="INFO">Current location is 'http://localhost:5000/auth/register'.</msg>
+<arg>${expected_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:37:56.817245" elapsed="0.007103"/>
+</kw>
+<arg>${BASE_URL}/auth/register</arg>
+<status status="PASS" start="2026-04-08T11:37:56.817245" elapsed="0.007103"/>
+</kw>
+<tag>blog_app</tag>
+<tag>negative</tag>
+<tag>registration</tag>
+<status status="PASS" start="2026-04-08T11:37:55.457551" elapsed="1.366797"/>
+</test>
+<test id="s1-t4" name="TC-04 Реєстрація з вже існуючим email" line="50">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:37:56.826350" elapsed="0.008328"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:56.834678" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:37:56.834678" elapsed="0.032761"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:37:56.826350" elapsed="0.041089"/>
+</kw>
+<kw name="Зареєструвати користувача" owner="keywords">
+<kw name="Перейти на сторінку реєстрації" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:56.867439" level="INFO">Opening url 'http://localhost:5000/register'</msg>
+<arg>${BASE_URL}/register</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:37:56.867439" elapsed="0.357795"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:37:56.867439" elapsed="0.357795"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:57.225234" level="INFO">Typing text 'rf_another' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:37:57.225234" elapsed="0.072454"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:57.297688" level="INFO">Typing text 'rf_user_01@example.com' into text field 'id=email'.</msg>
+<arg>id=email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:37:57.297688" elapsed="0.081130"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:57.378818" level="INFO">Typing text 'Password1!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:37:57.378818" elapsed="0.069185"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:57.448003" level="INFO">Typing text 'Password1!' into text field 'id=confirm'.</msg>
+<arg>id=confirm</arg>
+<arg>${confirm}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:37:57.448003" elapsed="0.068178"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:37:57.516181" elapsed="0.014582"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:37:57.530763" elapsed="0.285432"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:57.816195" level="INFO">Executing JavaScript:
+document.querySelector('#register').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:37:57.816195" elapsed="0.353586"/>
+</kw>
+<arg>id=register</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:37:57.516181" elapsed="0.653600"/>
+</kw>
+<arg>rf_another</arg>
+<arg>${UNIQUE_EMAIL}</arg>
+<arg>Password1!</arg>
+<arg>Password1!</arg>
+<status status="PASS" start="2026-04-08T11:37:56.867439" elapsed="1.302342"/>
+</kw>
+<kw name="Перевірити що знаходимось на сторінці" owner="keywords">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:58.176975" level="INFO">Current location is 'http://localhost:5000/auth/register'.</msg>
+<arg>${expected_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:37:58.170778" elapsed="0.006197"/>
+</kw>
+<arg>${BASE_URL}/auth/register</arg>
+<status status="PASS" start="2026-04-08T11:37:58.169781" elapsed="0.007194"/>
+</kw>
+<tag>blog_app</tag>
+<tag>negative</tag>
+<tag>registration</tag>
+<status status="PASS" start="2026-04-08T11:37:56.825345" elapsed="1.352653"/>
+</test>
+<test id="s1-t5" name="TC-05 Реєстрація з вже існуючим username" line="60">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:37:58.178984" elapsed="0.009540"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:58.188524" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:37:58.188524" elapsed="0.032618"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:37:58.178984" elapsed="0.042158"/>
+</kw>
+<kw name="Зареєструвати користувача" owner="keywords">
+<kw name="Перейти на сторінку реєстрації" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:58.222401" level="INFO">Opening url 'http://localhost:5000/register'</msg>
+<arg>${BASE_URL}/register</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:37:58.222401" elapsed="0.333722"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:37:58.222401" elapsed="0.333722"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:58.556123" level="INFO">Typing text 'rf_user_01' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:37:58.556123" elapsed="0.100386"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:58.657242" level="INFO">Typing text 'unique_new@example.com' into text field 'id=email'.</msg>
+<arg>id=email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:37:58.656509" elapsed="0.092550"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:58.749059" level="INFO">Typing text 'Password1!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:37:58.749059" elapsed="0.073964"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:58.823023" level="INFO">Typing text 'Password1!' into text field 'id=confirm'.</msg>
+<arg>id=confirm</arg>
+<arg>${confirm}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:37:58.823023" elapsed="0.067510"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:37:58.890533" elapsed="0.014900"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:37:58.905433" elapsed="0.282711"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:59.189147" level="INFO">Executing JavaScript:
+document.querySelector('#register').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:37:59.189147" elapsed="0.354991"/>
+</kw>
+<arg>id=register</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:37:58.890533" elapsed="0.653605"/>
+</kw>
+<arg>${UNIQUE_USER}</arg>
+<arg>unique_new@example.com</arg>
+<arg>Password1!</arg>
+<arg>Password1!</arg>
+<status status="PASS" start="2026-04-08T11:37:58.222401" elapsed="1.321737"/>
+</kw>
+<kw name="Перевірити що знаходимось на сторінці" owner="keywords">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:59.544138" level="INFO">Current location is 'http://localhost:5000/auth/register'.</msg>
+<arg>${expected_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:37:59.544138" elapsed="0.000000"/>
+</kw>
+<arg>${BASE_URL}/auth/register</arg>
+<status status="PASS" start="2026-04-08T11:37:59.544138" elapsed="0.000000"/>
+</kw>
+<tag>blog_app</tag>
+<tag>negative</tag>
+<tag>registration</tag>
+<status status="PASS" start="2026-04-08T11:37:58.177998" elapsed="1.366140"/>
+</test>
+<test id="s1-t6" name="TC-06 Сторінка входу відкривається коректно" line="74">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:37:59.554382" elapsed="0.008985"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:59.564365" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:37:59.563367" elapsed="0.036771"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:37:59.554382" elapsed="0.045756"/>
+</kw>
+<kw name="Перейти на сторінку входу" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:59.600138" level="INFO">Opening url 'http://localhost:5000/login'</msg>
+<arg>${BASE_URL}/login</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:37:59.600138" elapsed="0.344396"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:37:59.600138" elapsed="0.344396"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:59.958039" level="INFO">Current page contains text 'Sign In'.</msg>
+<arg>Sign In</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-04-08T11:37:59.944534" elapsed="0.013505"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:59.975036" level="INFO">Element 'id=username' is displayed.</msg>
+<arg>id=username</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:37:59.958039" elapsed="0.016997"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:37:59.989626" level="INFO">Element 'id=password' is displayed.</msg>
+<arg>id=password</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:37:59.976038" elapsed="0.013588"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:00.004202" level="INFO">Element 'id=login' is displayed.</msg>
+<arg>id=login</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:37:59.989626" elapsed="0.014576"/>
+</kw>
+<tag>blog_app</tag>
+<tag>login</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-04-08T11:37:59.553360" elapsed="0.450842"/>
+</test>
+<test id="s1-t7" name="TC-07 Успішний вхід з валідними даними" line="83">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:00.004202" elapsed="0.016660"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:00.020862" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:00.020862" elapsed="0.345764"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:00.004202" elapsed="0.362424"/>
+</kw>
+<kw name="Увійти як" owner="keywords">
+<kw name="Перейти на сторінку входу" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:00.369296" level="INFO">Opening url 'http://localhost:5000/login'</msg>
+<arg>${BASE_URL}/login</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:00.369296" elapsed="0.255433"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:00.366626" elapsed="0.258103"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:00.624729" level="INFO">Typing text 'rf_user_01' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:00.624729" elapsed="0.073559"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:00.698288" level="INFO">Typing text 'Password1!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:00.698288" elapsed="0.067238"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:00.765526" elapsed="0.013999"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:00.779525" elapsed="0.286605"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:01.066130" level="INFO">Executing JavaScript:
+document.querySelector('#login').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:01.066130" elapsed="0.595422"/>
+</kw>
+<arg>id=login</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:00.765526" elapsed="0.896026"/>
+</kw>
+<arg>${UNIQUE_USER}</arg>
+<arg>Password1!</arg>
+<status status="PASS" start="2026-04-08T11:38:00.366626" elapsed="1.294926"/>
+</kw>
+<kw name="Перевірити успішне повідомлення" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=alert_success</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:01.662458" elapsed="0.016859"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:01.693307" level="INFO">Element 'id=alert_success' is displayed.</msg>
+<arg>id=alert_success</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:01.679317" elapsed="0.013990"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:01.662458" elapsed="0.030849"/>
+</kw>
+<kw name="Перевірити що кнопка logout присутня" owner="keywords">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:01.702043" level="INFO">Element 'id=log_out' is displayed.</msg>
+<arg>id=log_out</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:01.694307" elapsed="0.007736"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:01.694307" elapsed="0.007736"/>
+</kw>
+<kw name="Перевірити що знаходимось на сторінці" owner="keywords">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:01.716985" level="INFO">Current location is 'http://localhost:5000/'.</msg>
+<arg>${expected_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:01.702043" elapsed="0.014942"/>
+</kw>
+<arg>${BASE_URL}/</arg>
+<status status="PASS" start="2026-04-08T11:38:01.702043" elapsed="0.016218"/>
+</kw>
+<tag>blog_app</tag>
+<tag>login</tag>
+<tag>positive</tag>
+<status status="PASS" start="2026-04-08T11:38:00.004202" elapsed="1.715045"/>
+</test>
+<test id="s1-t8" name="TC-08 Вхід з невірним паролем" line="91">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:01.720248" elapsed="0.008995"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:01.729243" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:01.729243" elapsed="0.031253"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:01.720248" elapsed="0.040248"/>
+</kw>
+<kw name="Увійти як" owner="keywords">
+<kw name="Перейти на сторінку входу" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:01.760496" level="INFO">Opening url 'http://localhost:5000/login'</msg>
+<arg>${BASE_URL}/login</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:01.760496" elapsed="0.346493"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:01.760496" elapsed="0.346493"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:02.106989" level="INFO">Typing text 'rf_user_01' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:02.106989" elapsed="0.064815"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:02.171804" level="INFO">Typing text 'WrongPassword!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:02.171804" elapsed="0.085683"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:02.257487" elapsed="0.011279"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:02.268766" elapsed="0.297502"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:02.566268" level="INFO">Executing JavaScript:
+document.querySelector('#login').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:02.566268" elapsed="0.563993"/>
+</kw>
+<arg>id=login</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:02.257487" elapsed="0.872774"/>
+</kw>
+<arg>${UNIQUE_USER}</arg>
+<arg>WrongPassword!</arg>
+<status status="PASS" start="2026-04-08T11:38:01.760496" elapsed="1.369765"/>
+</kw>
+<kw name="Перевірити повідомлення про помилку" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=alert_error</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:03.130261" elapsed="0.018979"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:03.165282" level="INFO">Element 'id=alert_error' is displayed.</msg>
+<arg>id=alert_error</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:03.149240" elapsed="0.016042"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:03.130261" elapsed="0.035021"/>
+</kw>
+<kw name="Перевірити що знаходимось на сторінці" owner="keywords">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:03.168399" level="INFO">Current location is 'http://localhost:5000/auth/login'.</msg>
+<arg>${expected_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:03.166269" elapsed="0.002130"/>
+</kw>
+<arg>${BASE_URL}/auth/login</arg>
+<status status="PASS" start="2026-04-08T11:38:03.165282" elapsed="0.003117"/>
+</kw>
+<tag>blog_app</tag>
+<tag>login</tag>
+<tag>negative</tag>
+<status status="PASS" start="2026-04-08T11:38:01.719247" elapsed="1.449152"/>
+</test>
+<test id="s1-t9" name="TC-09 Вхід з неіснуючим користувачем" line="98">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:03.168399" elapsed="0.000000"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:03.168399" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:03.168399" elapsed="0.046493"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:03.168399" elapsed="0.046493"/>
+</kw>
+<kw name="Увійти як" owner="keywords">
+<kw name="Перейти на сторінку входу" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:03.216881" level="INFO">Opening url 'http://localhost:5000/login'</msg>
+<arg>${BASE_URL}/login</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:03.216881" elapsed="0.339125"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:03.216881" elapsed="0.339125"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:03.556006" level="INFO">Typing text 'nobody_xyz_999' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:03.556006" elapsed="0.079987"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:03.635993" level="INFO">Typing text 'Password1!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:03.635993" elapsed="0.065248"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:03.701241" elapsed="0.016935"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:03.718176" elapsed="0.292734"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:04.011978" level="INFO">Executing JavaScript:
+document.querySelector('#login').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:04.010910" elapsed="0.368355"/>
+</kw>
+<arg>id=login</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:03.701241" elapsed="0.679021"/>
+</kw>
+<arg>nobody_xyz_999</arg>
+<arg>Password1!</arg>
+<status status="PASS" start="2026-04-08T11:38:03.214892" elapsed="1.165370"/>
+</kw>
+<kw name="Перевірити повідомлення про помилку" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=alert_error</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:04.380262" elapsed="0.016626"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:04.410262" level="INFO">Element 'id=alert_error' is displayed.</msg>
+<arg>id=alert_error</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:04.396888" elapsed="0.013374"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:04.380262" elapsed="0.030999"/>
+</kw>
+<kw name="Перевірити що знаходимось на сторінці" owner="keywords">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:04.415257" level="INFO">Current location is 'http://localhost:5000/auth/login'.</msg>
+<arg>${expected_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:04.411261" elapsed="0.003996"/>
+</kw>
+<arg>${BASE_URL}/auth/login</arg>
+<status status="PASS" start="2026-04-08T11:38:04.411261" elapsed="0.003996"/>
+</kw>
+<tag>blog_app</tag>
+<tag>login</tag>
+<tag>negative</tag>
+<status status="PASS" start="2026-04-08T11:38:03.168399" elapsed="1.247760"/>
+</test>
+<test id="s1-t10" name="TC-10 Успішний вихід з системи" line="105">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:04.417351" elapsed="0.000000"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:04.417351" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:04.417351" elapsed="0.042530"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:04.417351" elapsed="0.042530"/>
+</kw>
+<kw name="Увійти як" owner="keywords">
+<kw name="Перейти на сторінку входу" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:04.459881" level="INFO">Opening url 'http://localhost:5000/login'</msg>
+<arg>${BASE_URL}/login</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:04.459881" elapsed="0.345413"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:04.459881" elapsed="0.345413"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:04.805294" level="INFO">Typing text 'rf_user_01' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:04.805294" elapsed="0.064415"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:04.869709" level="INFO">Typing text 'Password1!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:04.869709" elapsed="0.071293"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:04.941002" elapsed="0.009377"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:04.950379" elapsed="0.307401"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:05.257780" level="INFO">Executing JavaScript:
+document.querySelector('#login').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:05.257780" elapsed="0.583420"/>
+</kw>
+<arg>id=login</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:04.941002" elapsed="0.900198"/>
+</kw>
+<arg>${UNIQUE_USER}</arg>
+<arg>Password1!</arg>
+<status status="PASS" start="2026-04-08T11:38:04.459881" elapsed="1.381319"/>
+</kw>
+<kw name="Вийти з системи" owner="keywords">
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:05.842695" elapsed="0.014978"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:05.857673" elapsed="0.275810"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:06.134481" level="INFO">Executing JavaScript:
+document.querySelector('#log_out').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:06.133483" elapsed="0.363371"/>
+</kw>
+<arg>id=log_out</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:05.842198" elapsed="0.654656"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:05.842198" elapsed="0.654656"/>
+</kw>
+<kw name="Перевірити що знаходимось на сторінці" owner="keywords">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:06.503021" level="INFO">Current location is 'http://localhost:5000/'.</msg>
+<arg>${expected_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:06.498007" elapsed="0.006009"/>
+</kw>
+<arg>${BASE_URL}/</arg>
+<status status="PASS" start="2026-04-08T11:38:06.498007" elapsed="0.006009"/>
+</kw>
+<kw name="Перевірити що кнопка logout відсутня" owner="keywords">
+<kw name="Element Should Not Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:06.510019" level="INFO">Element 'id=log_out' did not exist.</msg>
+<arg>id=log_out</arg>
+<doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:06.504016" elapsed="0.006003"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:06.504016" elapsed="0.006998"/>
+</kw>
+<tag>blog_app</tag>
+<tag>login</tag>
+<tag>positive</tag>
+<status status="PASS" start="2026-04-08T11:38:04.417351" elapsed="2.093663"/>
+</test>
+<test id="s1-t11" name="TC-11 Сторінка скидання паролю відкривається" line="117">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:06.513032" elapsed="0.008350"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:06.521382" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:06.521382" elapsed="0.344990"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:06.513032" elapsed="0.353340"/>
+</kw>
+<kw name="Перейти на сторінку забули пароль" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:06.867099" level="INFO">Opening url 'http://localhost:5000/forgot'</msg>
+<arg>${BASE_URL}/forgot</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:06.867099" elapsed="0.259118"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:06.867099" elapsed="0.259118"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:07.142262" level="INFO">Current page contains text 'Forgot Password'.</msg>
+<arg>Forgot Password</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-04-08T11:38:07.126217" elapsed="0.016045"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:07.158243" level="INFO">Element 'id=email' is displayed.</msg>
+<arg>id=email</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:07.143261" elapsed="0.014982"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:07.179312" level="INFO">Element 'id=forgot' is displayed.</msg>
+<arg>id=forgot</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:07.158243" elapsed="0.021069"/>
+</kw>
+<tag>blog_app</tag>
+<tag>password_reset</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-04-08T11:38:06.512040" elapsed="0.668189"/>
+</test>
+<test id="s1-t12" name="TC-12 Запит скидання паролю для існуючого email" line="125">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:07.180229" elapsed="0.000000"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:07.180229" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:07.180229" elapsed="0.354246"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:07.180229" elapsed="0.354246"/>
+</kw>
+<kw name="Перейти на сторінку забули пароль" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:07.535626" level="INFO">Opening url 'http://localhost:5000/forgot'</msg>
+<arg>${BASE_URL}/forgot</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:07.535626" elapsed="0.246554"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:07.534475" elapsed="0.248704"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:07.783179" level="INFO">Typing text 'rf_user_01@example.com' into text field 'id=email'.</msg>
+<arg>id=email</arg>
+<arg>${UNIQUE_EMAIL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:07.783179" elapsed="0.076496"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:07.859675" elapsed="0.004767"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:07.864442" elapsed="0.310525"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:08.174967" level="INFO">Executing JavaScript:
+document.querySelector('#forgot').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:08.174967" elapsed="0.364320"/>
+</kw>
+<arg>id=forgot</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:07.859675" elapsed="0.679612"/>
+</kw>
+<kw name="Перевірити що URL містить" owner="keywords">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:08.545816" level="INFO">Current location contains '/auth/login'.</msg>
+<arg>${fragment}</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-04-08T11:38:08.539287" elapsed="0.006529"/>
+</kw>
+<arg>/auth/login</arg>
+<status status="PASS" start="2026-04-08T11:38:08.539287" elapsed="0.007548"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:08.565827" level="INFO">Element 'css=.alert' is displayed.</msg>
+<arg>css=.alert</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:08.546835" elapsed="0.018992"/>
+</kw>
+<tag>blog_app</tag>
+<tag>password_reset</tag>
+<tag>positive</tag>
+<status status="PASS" start="2026-04-08T11:38:07.180229" elapsed="1.386603"/>
+</test>
+<test id="s1-t13" name="TC-13 Запит скидання паролю для неіснуючого email" line="134">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:08.567831" elapsed="0.008998"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:08.576829" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:08.576829" elapsed="0.226932"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:08.567831" elapsed="0.235930"/>
+</kw>
+<kw name="Перейти на сторінку забули пароль" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:08.803761" level="INFO">Opening url 'http://localhost:5000/forgot'</msg>
+<arg>${BASE_URL}/forgot</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:08.803761" elapsed="0.351142"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:08.803761" elapsed="0.351142"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:09.155909" level="INFO">Typing text 'nobody@nowhere.com' into text field 'id=email'.</msg>
+<arg>id=email</arg>
+<arg>nobody@nowhere.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:09.155909" elapsed="0.087130"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:09.245097" elapsed="0.001874"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:09.246971" elapsed="0.298955"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:09.545926" level="INFO">Executing JavaScript:
+document.querySelector('#forgot').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:09.545926" elapsed="0.349872"/>
+</kw>
+<arg>id=forgot</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:09.245097" elapsed="0.650701"/>
+</kw>
+<kw name="Перевірити що URL містить" owner="keywords">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:09.895798" level="INFO">Current location contains '/auth/login'.</msg>
+<arg>${fragment}</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-04-08T11:38:09.895798" elapsed="0.000000"/>
+</kw>
+<arg>/auth/login</arg>
+<status status="PASS" start="2026-04-08T11:38:09.895798" elapsed="0.000000"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:09.918182" level="INFO">Element 'css=.alert' is displayed.</msg>
+<arg>css=.alert</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:09.895798" elapsed="0.022384"/>
+</kw>
+<tag>blog_app</tag>
+<tag>negative</tag>
+<tag>password_reset</tag>
+<status status="PASS" start="2026-04-08T11:38:08.566832" elapsed="1.351350"/>
+</test>
+<test id="s1-t14" name="TC-14 Неавторизований користувач не може створити пост" line="147">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:09.919171" elapsed="0.006986"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:09.926157" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:09.926157" elapsed="0.215969"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:09.919171" elapsed="0.222955"/>
+</kw>
+<kw name="Перейти на сторінку створення поста" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:10.143124" level="INFO">Opening url 'http://localhost:5000/post'</msg>
+<arg>${BASE_URL}/post</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:10.143124" elapsed="0.345972"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:10.143124" elapsed="0.345972"/>
+</kw>
+<kw name="Перевірити що URL містить" owner="keywords">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:10.497957" level="INFO">Current location contains '/auth/login'.</msg>
+<arg>${fragment}</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-04-08T11:38:10.490095" elapsed="0.007862"/>
+</kw>
+<arg>/auth/login</arg>
+<status status="PASS" start="2026-04-08T11:38:10.490095" elapsed="0.007862"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:10.508962" level="INFO">Current page contains text 'Sign In'.</msg>
+<arg>Sign In</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-04-08T11:38:10.497957" elapsed="0.011005"/>
+</kw>
+<tag>auth</tag>
+<tag>blog_app</tag>
+<tag>negative</tag>
+<tag>posts</tag>
+<status status="PASS" start="2026-04-08T11:38:09.919171" elapsed="0.589791"/>
+</test>
+<test id="s1-t15" name="TC-15 Форма створення поста відображається для авторизованого" line="154">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:10.509961" elapsed="0.006999"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:10.517961" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:10.517961" elapsed="0.349953"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:10.509961" elapsed="0.357953"/>
+</kw>
+<kw name="Увійти як" owner="keywords">
+<kw name="Перейти на сторінку входу" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:10.867914" level="INFO">Opening url 'http://localhost:5000/login'</msg>
+<arg>${BASE_URL}/login</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:10.867914" elapsed="0.252874"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:10.867914" elapsed="0.252874"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:11.120788" level="INFO">Typing text 'rf_user_01' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:11.120788" elapsed="0.061993"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:11.182781" level="INFO">Typing text 'Password1!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:11.182781" elapsed="0.064220"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:11.247001" elapsed="0.014839"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:11.261840" elapsed="0.298760"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:11.561597" level="INFO">Executing JavaScript:
+document.querySelector('#login').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:11.560600" elapsed="0.581959"/>
+</kw>
+<arg>id=login</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:11.247001" elapsed="0.895558"/>
+</kw>
+<arg>${UNIQUE_USER}</arg>
+<arg>Password1!</arg>
+<status status="PASS" start="2026-04-08T11:38:10.867914" elapsed="1.274645"/>
+</kw>
+<kw name="Перейти на сторінку створення поста" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:12.143442" level="INFO">Opening url 'http://localhost:5000/post'</msg>
+<arg>${BASE_URL}/post</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:12.143442" elapsed="0.357863"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:12.143442" elapsed="0.357863"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:12.514912" level="INFO">Current page contains text 'Add a Blog/Post'.</msg>
+<arg>Add a Blog/Post</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-04-08T11:38:12.501305" elapsed="0.013607"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:12.525931" level="INFO">Element 'id=title' is displayed.</msg>
+<arg>id=title</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:12.515924" elapsed="0.010007"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:12.541588" level="INFO">Element 'id=description' is displayed.</msg>
+<arg>id=description</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:12.525931" elapsed="0.015657"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:12.576189" level="INFO">Element 'id=body' is displayed.</msg>
+<arg>id=body</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:12.541588" elapsed="0.034601"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:12.596336" level="INFO">Element 'id=post' is displayed.</msg>
+<arg>id=post</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:12.576189" elapsed="0.020147"/>
+</kw>
+<tag>blog_app</tag>
+<tag>posts</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-04-08T11:38:10.509961" elapsed="2.087381"/>
+</test>
+<test id="s1-t16" name="TC-16 Успішне створення нового поста" line="165">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:12.598343" elapsed="0.008209"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:12.607559" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:12.607559" elapsed="0.344690"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:12.598343" elapsed="0.353906"/>
+</kw>
+<kw name="Увійти як" owner="keywords">
+<kw name="Перейти на сторінку входу" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:12.952249" level="INFO">Opening url 'http://localhost:5000/login'</msg>
+<arg>${BASE_URL}/login</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:12.952249" elapsed="0.248153"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:12.952249" elapsed="0.248153"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:13.200402" level="INFO">Typing text 'rf_user_01' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:13.200402" elapsed="0.070097"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:13.270499" level="INFO">Typing text 'Password1!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:13.270499" elapsed="0.056226"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:13.326725" elapsed="0.016840"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:13.343565" elapsed="0.291387"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:13.635971" level="INFO">Executing JavaScript:
+document.querySelector('#login').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:13.635971" elapsed="0.606933"/>
+</kw>
+<arg>id=login</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:13.326725" elapsed="0.916179"/>
+</kw>
+<arg>${UNIQUE_USER}</arg>
+<arg>Password1!</arg>
+<status status="PASS" start="2026-04-08T11:38:12.952249" elapsed="1.291636"/>
+</kw>
+<kw name="Створити пост" owner="keywords">
+<kw name="Перейти на сторінку створення поста" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:14.245924" level="INFO">Opening url 'http://localhost:5000/post'</msg>
+<arg>${BASE_URL}/post</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:14.244934" elapsed="0.337948"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:14.244934" elapsed="0.337948"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:14.582882" level="INFO">Typing text 'Тестовий пост Robot Framework' into text field 'id=title'.</msg>
+<arg>id=title</arg>
+<arg>${title}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:14.582882" elapsed="0.093800"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:14.676682" level="INFO">Typing text 'Короткий опис тестового поста' into text field 'id=description'.</msg>
+<arg>id=description</arg>
+<arg>${description}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:14.676682" elapsed="0.081458"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:14.758140" level="INFO">Typing text 'Детальний текст поста, що створено через Robot Framework Keyword Driven Testing.' into text field 'id=body'.</msg>
+<arg>id=body</arg>
+<arg>${body}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:14.758140" elapsed="0.112617"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:14.870757" elapsed="0.016825"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:14.888596" elapsed="0.285255"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:15.174848" level="INFO">Executing JavaScript:
+document.querySelector('#post').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:15.173851" elapsed="0.413450"/>
+</kw>
+<arg>id=post</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:14.870757" elapsed="0.716544"/>
+</kw>
+<arg>Тестовий пост Robot Framework</arg>
+<arg>Короткий опис тестового поста</arg>
+<arg>Детальний текст поста, що створено через Robot Framework Keyword Driven Testing.</arg>
+<status status="PASS" start="2026-04-08T11:38:14.243885" elapsed="1.343416"/>
+</kw>
+<kw name="Перевірити успішне повідомлення" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=alert_success</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:15.588303" elapsed="0.003618"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:15.619167" level="INFO">Element 'id=alert_success' is displayed.</msg>
+<arg>id=alert_success</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:15.606424" elapsed="0.013742"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:15.588303" elapsed="0.031863"/>
+</kw>
+<kw name="Перевірити що сторінка містить текст" owner="keywords">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:15.623462" level="INFO">Current page contains text 'Blog Post posted successfully!'.</msg>
+<arg>${text}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-04-08T11:38:15.620166" elapsed="0.003296"/>
+</kw>
+<arg>Blog Post posted successfully!</arg>
+<status status="PASS" start="2026-04-08T11:38:15.620166" elapsed="0.003296"/>
+</kw>
+<kw name="Перевірити що сторінка містить текст" owner="keywords">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:15.639229" level="INFO">Current page contains text 'Тестовий пост Robot Framework'.</msg>
+<arg>${text}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-04-08T11:38:15.623462" elapsed="0.015767"/>
+</kw>
+<arg>Тестовий пост Robot Framework</arg>
+<status status="PASS" start="2026-04-08T11:38:15.623462" elapsed="0.015767"/>
+</kw>
+<tag>blog_app</tag>
+<tag>positive</tag>
+<tag>posts</tag>
+<status status="PASS" start="2026-04-08T11:38:12.597342" elapsed="3.041887"/>
+</test>
+<test id="s1-t17" name="TC-17 Створення поста без заголовку не проходить" line="177">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:15.639229" elapsed="0.017320"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:15.656549" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:15.656549" elapsed="0.125818"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:15.639229" elapsed="0.143138"/>
+</kw>
+<kw name="Увійти як" owner="keywords">
+<kw name="Перейти на сторінку входу" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:15.783360" level="INFO">Opening url 'http://localhost:5000/login'</msg>
+<arg>${BASE_URL}/login</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:15.783360" elapsed="0.343027"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:15.783360" elapsed="0.343027"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:16.126387" level="INFO">Typing text 'rf_user_01' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:16.126387" elapsed="0.073291"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:16.199678" level="INFO">Typing text 'Password1!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:16.199678" elapsed="0.081084"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:16.281765" elapsed="0.008700"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:16.290465" elapsed="0.298129"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:16.588594" level="INFO">Executing JavaScript:
+document.querySelector('#login').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:16.588594" elapsed="0.608932"/>
+</kw>
+<arg>id=login</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:16.280762" elapsed="0.916764"/>
+</kw>
+<arg>${UNIQUE_USER}</arg>
+<arg>Password1!</arg>
+<status status="PASS" start="2026-04-08T11:38:15.782367" elapsed="1.416150"/>
+</kw>
+<kw name="Перейти на сторінку створення поста" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:17.198517" level="INFO">Opening url 'http://localhost:5000/post'</msg>
+<arg>${BASE_URL}/post</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:17.198517" elapsed="0.346280"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:17.198517" elapsed="0.346280"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:17.544797" level="INFO">Typing text 'Опис без заголовку' into text field 'id=description'.</msg>
+<arg>id=description</arg>
+<arg>Опис без заголовку</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:17.544797" elapsed="0.091291"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:17.637935" level="INFO">Typing text 'Тіло поста без заголовку.' into text field 'id=body'.</msg>
+<arg>id=body</arg>
+<arg>Тіло поста без заголовку.</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:17.637935" elapsed="0.084451"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:17.723013" elapsed="0.017208"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:17.740576" elapsed="0.296296"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:18.036872" level="INFO">Executing JavaScript:
+document.querySelector('#post').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:18.036872" elapsed="0.347811"/>
+</kw>
+<arg>id=post</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:17.723013" elapsed="0.661670"/>
+</kw>
+<kw name="Перевірити що знаходимось на сторінці" owner="keywords">
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:18.393273" level="INFO">Current location is 'http://localhost:5000/posts/create'.</msg>
+<arg>${expected_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:18.384683" elapsed="0.008590"/>
+</kw>
+<arg>${BASE_URL}/posts/create</arg>
+<status status="PASS" start="2026-04-08T11:38:18.384683" elapsed="0.008590"/>
+</kw>
+<tag>blog_app</tag>
+<tag>negative</tag>
+<tag>posts</tag>
+<status status="PASS" start="2026-04-08T11:38:15.639229" elapsed="2.754044"/>
+</test>
+<test id="s1-t18" name="TC-18 Пости відображаються на головній сторінці" line="187">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:18.395264" elapsed="0.008003"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:18.404266" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:18.403267" elapsed="0.039796"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:18.394267" elapsed="0.048796"/>
+</kw>
+<kw name="Перейти на головну сторінку" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:18.443063" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:18.443063" elapsed="0.201665"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:18.443063" elapsed="0.201665"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:18.667799" level="INFO">Element 'id=post_listing' is displayed.</msg>
+<arg>id=post_listing</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:18.644728" elapsed="0.023071"/>
+</kw>
+<kw name="Перевірити що сторінка містить текст" owner="keywords">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:18.679801" level="INFO">Current page contains text 'Тестовий пост Robot Framework'.</msg>
+<arg>${text}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-04-08T11:38:18.668801" elapsed="0.011000"/>
+</kw>
+<arg>Тестовий пост Robot Framework</arg>
+<status status="PASS" start="2026-04-08T11:38:18.668801" elapsed="0.011000"/>
+</kw>
+<tag>blog_app</tag>
+<tag>posts</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-04-08T11:38:18.394267" elapsed="0.286537"/>
+</test>
+<test id="s1-t19" name="TC-19 Неавторизований не бачить форму коментаря" line="198">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:18.682798" elapsed="0.005109"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:18.687907" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:18.687907" elapsed="0.094159"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:18.682798" elapsed="0.100270"/>
+</kw>
+<kw name="Перейти на головну сторінку" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:18.783068" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:18.783068" elapsed="0.250747"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:18.783068" elapsed="0.250747"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:19.033815" level="INFO">Clicking link 'Тестовий пост Robot Framework'.</msg>
+<arg>Тестовий пост Robot Framework</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:19.033815" elapsed="0.254479"/>
+</kw>
+<kw name="Page Should Not Contain Element" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:19.301925" level="INFO">Current page does not contain element 'id=add_comment'.</msg>
+<arg>id=add_comment</arg>
+<doc>Verifies that element ``locator`` is not found on the current page.</doc>
+<status status="PASS" start="2026-04-08T11:38:19.289298" elapsed="0.012627"/>
+</kw>
+<tag>auth</tag>
+<tag>blog_app</tag>
+<tag>comments</tag>
+<tag>negative</tag>
+<status status="PASS" start="2026-04-08T11:38:18.681803" elapsed="0.620122"/>
+</test>
+<test id="s1-t20" name="TC-20 Успішне додавання коментаря до поста" line="205">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:19.304131" elapsed="0.010004"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:19.314135" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:19.314135" elapsed="0.152821"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:19.304131" elapsed="0.165506"/>
+</kw>
+<kw name="Увійти як" owner="keywords">
+<kw name="Перейти на сторінку входу" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:19.470647" level="INFO">Opening url 'http://localhost:5000/login'</msg>
+<arg>${BASE_URL}/login</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:19.470647" elapsed="0.340481"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:19.470647" elapsed="0.340481"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:19.811128" level="INFO">Typing text 'rf_user_01' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:19.811128" elapsed="0.081983"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:19.893111" level="INFO">Typing text 'Password1!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:19.893111" elapsed="0.077579"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:19.971385" elapsed="0.016027"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:19.987412" elapsed="0.281241"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:20.270673" level="INFO">Executing JavaScript:
+document.querySelector('#login').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:20.269675" elapsed="0.604033"/>
+</kw>
+<arg>id=login</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:19.971385" elapsed="0.902323"/>
+</kw>
+<arg>${UNIQUE_USER}</arg>
+<arg>Password1!</arg>
+<status status="PASS" start="2026-04-08T11:38:19.469637" elapsed="1.404071"/>
+</kw>
+<kw name="Перейти на головну сторінку" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:20.873708" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:20.873708" elapsed="0.034891"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:20.873708" elapsed="0.034891"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:20.909595" level="INFO">Clicking link 'Тестовий пост Robot Framework'.</msg>
+<arg>Тестовий пост Robot Framework</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:20.908599" elapsed="0.323988"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:21.233598" level="INFO">Typing text 'Robot Tester' into text field 'id=name'.</msg>
+<arg>id=name</arg>
+<arg>Robot Tester</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:21.233598" elapsed="0.089200"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:21.322798" level="INFO">Typing text 'Коментар від Robot Framework!' into text field 'id=message'.</msg>
+<arg>id=message</arg>
+<arg>Коментар від Robot Framework!</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:21.322798" elapsed="0.098743"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:21.421541" elapsed="0.013510"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:21.435051" elapsed="0.301194"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:21.736245" level="INFO">Executing JavaScript:
+document.querySelector('#add_comment').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:21.736245" elapsed="0.349345"/>
+</kw>
+<arg>id=add_comment</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:21.421541" elapsed="0.664049"/>
+</kw>
+<kw name="Перевірити що сторінка містить текст" owner="keywords">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:22.105762" level="INFO">Current page contains text 'Comment added to the Post successfully!'.</msg>
+<arg>${text}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-04-08T11:38:22.086734" elapsed="0.019028"/>
+</kw>
+<arg>Comment added to the Post successfully!</arg>
+<status status="PASS" start="2026-04-08T11:38:22.086734" elapsed="0.019028"/>
+</kw>
+<tag>blog_app</tag>
+<tag>comments</tag>
+<tag>positive</tag>
+<status status="PASS" start="2026-04-08T11:38:19.302927" elapsed="2.802835"/>
+</test>
+<test id="s1-t21" name="TC-21 Неавторизований не має доступу до профілю" line="220">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:22.117440" elapsed="0.009012"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:22.126452" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:22.126452" elapsed="0.332276"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:22.117440" elapsed="0.341288"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:22.458728" level="INFO">Opening url 'http://localhost:5000/users/settings/profile'</msg>
+<arg>${BASE_URL}/users/settings/profile</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:22.458728" elapsed="0.259495"/>
+</kw>
+<kw name="Перевірити що URL містить" owner="keywords">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:22.724216" level="INFO">Current location contains '/auth/login'.</msg>
+<arg>${fragment}</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-04-08T11:38:22.718223" elapsed="0.005993"/>
+</kw>
+<arg>/auth/login</arg>
+<status status="PASS" start="2026-04-08T11:38:22.718223" elapsed="0.005993"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:22.738324" level="INFO">Current page contains text 'Sign In'.</msg>
+<arg>Sign In</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-04-08T11:38:22.724216" elapsed="0.014108"/>
+</kw>
+<tag>auth</tag>
+<tag>blog_app</tag>
+<tag>negative</tag>
+<tag>profile</tag>
+<status status="PASS" start="2026-04-08T11:38:22.105762" elapsed="0.633551"/>
+</test>
+<test id="s1-t22" name="TC-22 Сторінка профілю відкривається для авторизованого" line="227">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:22.741318" elapsed="0.008998"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:22.751487" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:22.751487" elapsed="0.348395"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:22.740318" elapsed="0.359564"/>
+</kw>
+<kw name="Увійти як" owner="keywords">
+<kw name="Перейти на сторінку входу" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:23.101894" level="INFO">Opening url 'http://localhost:5000/login'</msg>
+<arg>${BASE_URL}/login</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:23.100895" elapsed="0.242199"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:23.100895" elapsed="0.242199"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:23.343094" level="INFO">Typing text 'rf_user_01' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:23.343094" elapsed="0.081018"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:23.424112" level="INFO">Typing text 'Password1!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:23.424112" elapsed="0.077411"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:23.516261" elapsed="0.007555"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:23.532891" elapsed="0.298035"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:23.830926" level="INFO">Executing JavaScript:
+document.querySelector('#login').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:23.830926" elapsed="0.593663"/>
+</kw>
+<arg>id=login</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:23.516261" elapsed="0.908328"/>
+</kw>
+<arg>${UNIQUE_USER}</arg>
+<arg>Password1!</arg>
+<status status="PASS" start="2026-04-08T11:38:23.100895" elapsed="1.323694"/>
+</kw>
+<kw name="Перейти на профіль" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:24.424589" level="INFO">Opening url 'http://localhost:5000/profile'</msg>
+<arg>${BASE_URL}/profile</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:24.424589" elapsed="0.350575"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:24.424589" elapsed="0.350575"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:24.793892" level="INFO">Current page contains text 'Your Profile'.</msg>
+<arg>Your Profile</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-04-08T11:38:24.775164" elapsed="0.018728"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:24.813884" level="INFO">Element 'id=firstname' is displayed.</msg>
+<arg>id=firstname</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:24.794886" elapsed="0.018998"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:24.837361" level="INFO">Element 'id=lastname' is displayed.</msg>
+<arg>id=lastname</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:24.814886" elapsed="0.022475"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:24.849777" level="INFO">Element 'id=bio' is displayed.</msg>
+<arg>id=bio</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:24.837361" elapsed="0.012416"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:24.883137" level="INFO">Element 'id=update_profile' is displayed.</msg>
+<arg>id=update_profile</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:24.849777" elapsed="0.033360"/>
+</kw>
+<tag>blog_app</tag>
+<tag>profile</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-04-08T11:38:22.740318" elapsed="2.142819"/>
+</test>
+<test id="s1-t23" name="TC-23 Успішне оновлення профілю" line="238">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:24.883137" elapsed="0.003561"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:24.886698" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:24.886698" elapsed="0.342878"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:24.883137" elapsed="0.346439"/>
+</kw>
+<kw name="Увійти як" owner="keywords">
+<kw name="Перейти на сторінку входу" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:25.231942" level="INFO">Opening url 'http://localhost:5000/login'</msg>
+<arg>${BASE_URL}/login</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:25.231942" elapsed="0.272187"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:25.230615" elapsed="0.273514"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:25.504129" level="INFO">Typing text 'rf_user_01' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:25.504129" elapsed="0.068670"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:25.572799" level="INFO">Typing text 'Password1!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:25.572799" elapsed="0.094426"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:25.667225" elapsed="0.021975"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:25.689200" elapsed="0.288710"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:25.978915" level="INFO">Executing JavaScript:
+document.querySelector('#login').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:25.978915" elapsed="0.592961"/>
+</kw>
+<arg>id=login</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:25.667225" elapsed="0.904651"/>
+</kw>
+<arg>${UNIQUE_USER}</arg>
+<arg>Password1!</arg>
+<status status="PASS" start="2026-04-08T11:38:25.230615" elapsed="1.341261"/>
+</kw>
+<kw name="Оновити профіль" owner="keywords">
+<kw name="Перейти на профіль" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:26.572880" level="INFO">Opening url 'http://localhost:5000/profile'</msg>
+<arg>${BASE_URL}/profile</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:26.572880" elapsed="0.347719"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:26.572880" elapsed="0.347719"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>id=firstname</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:26.920599" elapsed="0.036389"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:26.956988" level="INFO">Typing text 'Robot' into text field 'id=firstname'.</msg>
+<arg>id=firstname</arg>
+<arg>${firstname}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:26.956988" elapsed="0.059378"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>id=lastname</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:27.016366" elapsed="0.041487"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:27.057853" level="INFO">Typing text 'Tester' into text field 'id=lastname'.</msg>
+<arg>id=lastname</arg>
+<arg>${lastname}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:27.057853" elapsed="0.074944"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>id=bio</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:27.132797" elapsed="0.021516"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:27.154313" level="INFO">Typing text 'Автоматичний тестувальник Robot Framework' into text field 'id=bio'.</msg>
+<arg>id=bio</arg>
+<arg>${bio}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-08T11:38:27.154313" elapsed="0.094461"/>
+</kw>
+<kw name="Безпечний клік" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:27.248774" elapsed="0.016390"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2026-04-08T11:38:27.265164" elapsed="0.279776"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:27.546944" level="INFO">Executing JavaScript:
+document.querySelector('#update_profile').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${locator.replace("id=", "#").replace("css=", "")}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-04-08T11:38:27.545946" elapsed="0.384663"/>
+</kw>
+<arg>id=update_profile</arg>
+<doc>Прокручує до елемента і клікає через JS щоб уникнути перекриття</doc>
+<status status="PASS" start="2026-04-08T11:38:27.248774" elapsed="0.682834"/>
+</kw>
+<arg>Robot</arg>
+<arg>Tester</arg>
+<arg>Автоматичний тестувальник Robot Framework</arg>
+<status status="PASS" start="2026-04-08T11:38:26.572880" elapsed="1.358728"/>
+</kw>
+<kw name="Перевірити успішне повідомлення" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=alert_success</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:27.931608" elapsed="0.014244"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:27.976488" level="INFO">Element 'id=alert_success' is displayed.</msg>
+<arg>id=alert_success</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-08T11:38:27.946872" elapsed="0.029616"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:27.931608" elapsed="0.045886"/>
+</kw>
+<kw name="Перевірити що сторінка містить текст" owner="keywords">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:27.991488" level="INFO">Current page contains text 'Profile updated successfully!'.</msg>
+<arg>${text}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-04-08T11:38:27.977494" elapsed="0.013994"/>
+</kw>
+<arg>Profile updated successfully!</arg>
+<status status="PASS" start="2026-04-08T11:38:27.977494" elapsed="0.013994"/>
+</kw>
+<tag>blog_app</tag>
+<tag>positive</tag>
+<tag>profile</tag>
+<status status="PASS" start="2026-04-08T11:38:24.883137" elapsed="3.109349"/>
+</test>
+<test id="s1-t24" name="TC-24 Публічний профіль користувача доступний" line="246">
+<kw name="Очистити сесію" owner="keywords">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-04-08T11:38:27.992486" elapsed="0.003682"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:27.996168" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:27.996168" elapsed="0.154735"/>
+</kw>
+<doc>Видаляє cookies — гарантує неавторизований стан перед тестом</doc>
+<status status="PASS" start="2026-04-08T11:38:27.992486" elapsed="0.158417"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:28.150903" level="INFO">Opening url 'http://localhost:5000/users/rf_user_01'</msg>
+<arg>${BASE_URL}/users/${UNIQUE_USER}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-04-08T11:38:28.150903" elapsed="0.228589"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:28.396501" level="INFO">Current page contains text 'rf_user_01'.</msg>
+<arg>${UNIQUE_USER}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-04-08T11:38:28.380742" elapsed="0.015759"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-04-08T11:38:28.409496" level="INFO">Current page contains text 'Posts'.</msg>
+<arg>Posts</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-04-08T11:38:28.397495" elapsed="0.012001"/>
+</kw>
+<tag>blog_app</tag>
+<tag>profile</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-04-08T11:38:27.992486" elapsed="0.417010"/>
+</test>
+<kw name="Закрити браузер" owner="keywords" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-04-08T11:38:28.410495" elapsed="3.299913"/>
+</kw>
+<status status="PASS" start="2026-04-08T11:38:28.410495" elapsed="3.299913"/>
+</kw>
+<status status="FAIL" start="2026-04-08T11:37:34.589888" elapsed="57.120520"/>
+</suite>
+<statistics>
+<total>
+<stat pass="23" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="3" fail="0" skip="0">auth</stat>
+<stat pass="23" fail="1" skip="0">blog_app</stat>
+<stat pass="2" fail="0" skip="0">comments</stat>
+<stat pass="5" fail="0" skip="0">login</stat>
+<stat pass="10" fail="0" skip="0">negative</stat>
+<stat pass="3" fail="0" skip="0">password_reset</stat>
+<stat pass="6" fail="1" skip="0">positive</stat>
+<stat pass="5" fail="0" skip="0">posts</stat>
+<stat pass="4" fail="0" skip="0">profile</stat>
+<stat pass="4" fail="1" skip="0">registration</stat>
+<stat pass="7" fail="0" skip="0">smoke</stat>
+</tag>
+<suite>
+<stat pass="23" fail="1" skip="0" id="s1" name="Blog Tests">Blog Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
